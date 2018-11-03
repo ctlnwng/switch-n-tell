@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		3101839E218DF2DC00BD4CE0 /* BoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3101839D218DF2DC00BD4CE0 /* BoardViewController.swift */; };
-		98CC352C218DF3F10064F276 /* STOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CC352B218DF3F10064F276 /* STOnboardingViewController.swift */; };
 		7DC4EADC218E135E00BB2F75 /* Plane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC4EADB218E135E00BB2F75 /* Plane.swift */; };
 		7DC4EADE218E18C400BB2F75 /* BoardSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC4EADD218E18C400BB2F75 /* BoardSetupViewController.swift */; };
+		7DC4EAE2218E231300BB2F75 /* plane_grid.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DC4EAE1218E231300BB2F75 /* plane_grid.png */; };
 		98CC352C218DF3F10064F276 /* STOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CC352B218DF3F10064F276 /* STOnboardingViewController.swift */; };
 		98E004F9218DE9720054B7A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E004F8218DE9720054B7A4 /* AppDelegate.swift */; };
 		98E004FB218DE9720054B7A4 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 98E004FA218DE9720054B7A4 /* art.scnassets */; };
@@ -22,9 +22,9 @@
 
 /* Begin PBXFileReference section */
 		3101839D218DF2DC00BD4CE0 /* BoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewController.swift; sourceTree = "<group>"; };
-		98CC352B218DF3F10064F276 /* STOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STOnboardingViewController.swift; sourceTree = "<group>"; };
 		7DC4EADB218E135E00BB2F75 /* Plane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plane.swift; sourceTree = "<group>"; };
 		7DC4EADD218E18C400BB2F75 /* BoardSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardSetupViewController.swift; sourceTree = "<group>"; };
+		7DC4EAE1218E231300BB2F75 /* plane_grid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plane_grid.png; sourceTree = "<group>"; };
 		98CC352B218DF3F10064F276 /* STOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STOnboardingViewController.swift; sourceTree = "<group>"; };
 		98E004F5218DE9720054B7A4 /* SwitchNTell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwitchNTell.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		98E004F8218DE9720054B7A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -55,6 +55,14 @@
 			path = Objects;
 			sourceTree = "<group>";
 		};
+		7DC4EAE0218E230600BB2F75 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7DC4EAE1218E231300BB2F75 /* plane_grid.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		98E004EC218DE9720054B7A4 = {
 			isa = PBXGroup;
 			children = (
@@ -74,6 +82,7 @@
 		98E004F7218DE9720054B7A4 /* SwitchNTell */ = {
 			isa = PBXGroup;
 			children = (
+				7DC4EAE0218E230600BB2F75 /* Resources */,
 				7DC4EADA218E134F00BB2F75 /* Objects */,
 				98E004F8218DE9720054B7A4 /* AppDelegate.swift */,
 				98E004FA218DE9720054B7A4 /* art.scnassets */,
@@ -149,6 +158,7 @@
 			files = (
 				98E004FB218DE9720054B7A4 /* art.scnassets in Resources */,
 				98E00505218DE9740054B7A4 /* LaunchScreen.storyboard in Resources */,
+				7DC4EAE2218E231300BB2F75 /* plane_grid.png in Resources */,
 				98E00502218DE9740054B7A4 /* Assets.xcassets in Resources */,
 				98E00500218DE9720054B7A4 /* Main.storyboard in Resources */,
 			);
