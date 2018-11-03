@@ -37,6 +37,15 @@ class Plane: SCNNode {
         self.position = SCNVector3(anchor.center.x, -0.002, anchor.center.z) // 2 mm below the origin of plane.
     }
     
+    func update(_ anchor: ARPlaneAnchor) {
+        self.planeAnchor = anchor
+        
+        self.planeGeometry.width = CGFloat(anchor.extent.x)
+        self.planeGeometry.height = CGFloat(anchor.extent.z)
+        
+        self.position = SCNVector3Make(anchor.center.x, -0.002, anchor.center.z)
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

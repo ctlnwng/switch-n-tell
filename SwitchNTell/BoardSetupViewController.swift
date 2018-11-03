@@ -18,6 +18,8 @@ class BoardSetupViewController: UIViewController, ARSCNViewDelegate {
     @IBOutlet var sceneView: ARSCNView!
     var onboarding: STOnboardingViewController?
     
+    var planes = [ARPlaneAnchor: Plane]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,6 +50,7 @@ class BoardSetupViewController: UIViewController, ARSCNViewDelegate {
     
     func addPlane(node: SCNNode, anchor: ARPlaneAnchor) {
         let plane = Plane(anchor)
+        planes[anchor] = plane
         node.addChildNode(plane)
     }
     
@@ -109,6 +112,21 @@ class BoardSetupViewController: UIViewController, ARSCNViewDelegate {
         }
     }
     // Code Example from https://github.com/kravik/ArMeasureDemo/blob/master/ArMeasureDemo/ViewController.swift
+    
+    
+    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
+        DispatchQueue.main.async {
+            if let planeAnchor = anchor as? ARPlaneAnchor {
+                self.updatePlane(anchor: planeAnchor)
+            }
+        }
+    }
+    
+    func updatePlane(anchor: ARPlaneAnchor) {
+        if let plane = planes[anchor] {
+            plane.update(anchor)
+        }
+    }
 }
 
 //TODO: move to objects directory if keep beyond testing
