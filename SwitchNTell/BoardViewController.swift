@@ -23,9 +23,11 @@ class BoardViewController: UIViewController, ARSCNViewDelegate {
         // Show statistics such as fps and timing information
         sceneView.showsStatistics = true
 
-        // Create a new scene
-        let scene = SCNScene(named: "art.scnassets/ship.scn")!
+        let scene = SCNScene()
+        let gameSpace = GameSpace()
 
+        scene.rootNode.addChildNode(gameSpace)
+        
         // Set the scene to the view
         sceneView.scene = scene
     }

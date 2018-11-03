@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3101839E218DF2DC00BD4CE0 /* BoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3101839D218DF2DC00BD4CE0 /* BoardViewController.swift */; };
-		98CC352C218DF3F10064F276 /* STOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CC352B218DF3F10064F276 /* STOnboardingViewController.swift */; };
+		310183A0218E215100BD4CE0 /* GameSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3101839F218E215100BD4CE0 /* GameSpace.swift */; };
 		7DC4EADC218E135E00BB2F75 /* Plane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC4EADB218E135E00BB2F75 /* Plane.swift */; };
 		7DC4EADE218E18C400BB2F75 /* BoardSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC4EADD218E18C400BB2F75 /* BoardSetupViewController.swift */; };
 		98CC352C218DF3F10064F276 /* STOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CC352B218DF3F10064F276 /* STOnboardingViewController.swift */; };
@@ -22,7 +22,7 @@
 
 /* Begin PBXFileReference section */
 		3101839D218DF2DC00BD4CE0 /* BoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewController.swift; sourceTree = "<group>"; };
-		98CC352B218DF3F10064F276 /* STOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STOnboardingViewController.swift; sourceTree = "<group>"; };
+		3101839F218E215100BD4CE0 /* GameSpace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSpace.swift; sourceTree = "<group>"; };
 		7DC4EADB218E135E00BB2F75 /* Plane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plane.swift; sourceTree = "<group>"; };
 		7DC4EADD218E18C400BB2F75 /* BoardSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardSetupViewController.swift; sourceTree = "<group>"; };
 		98CC352B218DF3F10064F276 /* STOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STOnboardingViewController.swift; sourceTree = "<group>"; };
@@ -51,6 +51,7 @@
 			isa = PBXGroup;
 			children = (
 				7DC4EADB218E135E00BB2F75 /* Plane.swift */,
+				3101839F218E215100BD4CE0 /* GameSpace.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -166,6 +167,7 @@
 				98E004F9218DE9720054B7A4 /* AppDelegate.swift in Sources */,
 				7DC4EADE218E18C400BB2F75 /* BoardSetupViewController.swift in Sources */,
 				3101839E218DF2DC00BD4CE0 /* BoardViewController.swift in Sources */,
+				310183A0218E215100BD4CE0 /* GameSpace.swift in Sources */,
 				98CC352C218DF3F10064F276 /* STOnboardingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -311,13 +313,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 358QD9LM95;
+				DEVELOPMENT_TEAM = R6BKCMLX4N;
 				INFOPLIST_FILE = SwitchNTell/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = i.SwitchNTell;
+				PRODUCT_BUNDLE_IDENTIFIER = i.SwitchNTell22;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -329,13 +331,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 358QD9LM95;
+				DEVELOPMENT_TEAM = R6BKCMLX4N;
 				INFOPLIST_FILE = SwitchNTell/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = i.SwitchNTell;
+				PRODUCT_BUNDLE_IDENTIFIER = i.SwitchNTell22;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
