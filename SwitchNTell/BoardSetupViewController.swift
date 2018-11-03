@@ -18,7 +18,7 @@ class BoardSetupViewController: UIViewController, ARSCNViewDelegate {
     @IBOutlet var sceneView: ARSCNView!
     var onboarding: STOnboardingViewController?
     
-    var planes = [ARPlaneAnchor: Plane]()
+    var plane : Plane?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,9 +49,16 @@ class BoardSetupViewController: UIViewController, ARSCNViewDelegate {
     }
     
     func addPlane(node: SCNNode, anchor: ARPlaneAnchor) {
-        let plane = Plane(anchor)
-        planes[anchor] = plane
-        node.addChildNode(plane)
+        //remove the existing plane from the scene
+        plane?.removeFromParentNode()
+    
+        //save the new plane
+        plane = Plane(anchor)
+        
+        //add the new plane to the scene
+        if let p = plane {
+            node.addChildNode(p)
+        }
     }
     
     private func setupNextVC() {
@@ -103,17 +110,21 @@ class BoardSetupViewController: UIViewController, ARSCNViewDelegate {
         let hitTestResults = sceneView.hitTest(tapLocation, types: .existingPlaneUsingExtent)
         
         guard let hitTestResult = hitTestResults.first else { return }
-        let translation = hitTestResult.worldTransform.translation
-        let x = translation.x
-        let y = translation.y
-        let z = translation.z
-
-        let sphere = SCNSphere(color: self.nodeColor, radius: CGFloat(self.nodeRadius))
-        let sphereNode = SCNNode(geometry: sphere)
-        sphereNode.position = SCNVector3(x,y,z)
         
-        sceneView.scene.rootNode.addChildNode(sphereNode)
-        nodes.append(sphereNode)
+        //only place on the current plane
+        if(hitTestResult.anchor == plane?.planeAnchor) {
+            let translation = hitTestResult.worldTransform.translation
+            let x = translation.x
+            let y = translation.y
+            let z = translation.z
+            
+            let sphere = SCNSphere(color: self.nodeColor, radius: CGFloat(self.nodeRadius))
+            let sphereNode = SCNNode(geometry: sphere)
+            sphereNode.position = SCNVector3(x,y,z)
+            
+            sceneView.scene.rootNode.addChildNode(sphereNode)
+            nodes.append(sphereNode)
+        }
     }
     // Code Example from https://github.com/kravik/ArMeasureDemo/blob/master/ArMeasureDemo/ViewController.swift
     
@@ -121,15 +132,26 @@ class BoardSetupViewController: UIViewController, ARSCNViewDelegate {
     func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
         DispatchQueue.main.async {
             if let planeAnchor = anchor as? ARPlaneAnchor {
-                self.updatePlane(anchor: planeAnchor)
+                self.updatePlane(anchor: planeAnchor, node: node)
             }
+            
         }
     }
     
-    func updatePlane(anchor: ARPlaneAnchor) {
-        if let plane = planes[anchor] {
-            plane.update(anchor)
+    func updatePlane(anchor: ARPlaneAnchor, node:SCNNode) {
+        //if this is not the current plane, we've seen it before, switch to it being the primary one
+        if let p = plane, p.planeAnchor != anchor {
+            //TODO: dupe code
+            plane?.removeFromParentNode()
+            plane = Plane(anchor)
+            
+            //add the new plane to the scene
+            if let p = plane {
+                node.addChildNode(p)
+            }
         }
+        //extend the current plane
+        plane?.update(anchor)
     }
 }
 
