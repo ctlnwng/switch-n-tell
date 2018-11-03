@@ -39,17 +39,15 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f7P-bD-YhU">
-                                <rect key="frame" x="122" y="440" width="131" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f7P-bD-YhU">
+                                <rect key="frame" x="122" y="577" width="131" height="30"/>
                                 <state key="normal" title="Go to Board Setup "/>
                                 <connections>
                                     <segue destination="Efu-FD-hjw" kind="show" id="s6x-bH-ypE"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TpA-rw-hi3">
-                                <rect key="frame" x="146" y="547" width="82" height="27"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TpA-rw-hi3">
+                                <rect key="frame" x="146" y="622" width="82" height="30"/>
                                 <state key="normal" title="Go to Board"/>
                                 <connections>
                                     <segue destination="565-Kb-04F" kind="show" id="bUU-uc-5m3"/>
@@ -58,8 +56,12 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="hod-jh-WqG" firstAttribute="bottom" secondItem="TpA-rw-hi3" secondAttribute="bottom" constant="15" id="1WE-2z-OVt"/>
                             <constraint firstItem="O8p-z9-k5y" firstAttribute="centerY" secondItem="fDO-ip-PoU" secondAttribute="centerY" id="DhM-S6-5uI"/>
+                            <constraint firstItem="TpA-rw-hi3" firstAttribute="top" secondItem="f7P-bD-YhU" secondAttribute="bottom" constant="15" id="Ub7-jM-ns2"/>
                             <constraint firstItem="O8p-z9-k5y" firstAttribute="centerX" secondItem="fDO-ip-PoU" secondAttribute="centerX" id="fov-I0-TSC"/>
+                            <constraint firstItem="f7P-bD-YhU" firstAttribute="centerX" secondItem="fDO-ip-PoU" secondAttribute="centerX" id="kjd-GK-u7i"/>
+                            <constraint firstItem="TpA-rw-hi3" firstAttribute="centerX" secondItem="fDO-ip-PoU" secondAttribute="centerX" id="sYL-vv-PyF"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hod-jh-WqG"/>
                     </view>
@@ -82,7 +84,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pbg-Wh-x0p" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2138" y="61"/>
+            <point key="canvasLocation" x="2150" y="38"/>
         </scene>
         <!--Board View Controller-->
         <scene sceneID="u3J-5O-yyJ">
@@ -98,7 +100,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EOe-6Y-hql" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2927" y="61"/>
+            <point key="canvasLocation" x="2926" y="38"/>
         </scene>
     </scenes>
 </document>
