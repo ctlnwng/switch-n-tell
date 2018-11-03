@@ -36,7 +36,7 @@ class STNumPlayersOnboardingViewController : UIViewController, UITextFieldDelega
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "goToBoardSetup")
         {
-            // send to the STSettings
+            STSettings.instance().numPlayers = numPlayersTextField.text ?? ""
         }
     }
     
