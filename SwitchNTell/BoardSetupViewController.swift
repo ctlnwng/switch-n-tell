@@ -100,16 +100,20 @@ class BoardSetupViewController: UIViewController, ARSCNViewDelegate {
     @objc func handleTap(sender: UITapGestureRecognizer) {
         
         let tapLocation = sceneView.center// Get the center point, of the SceneView.
-        let hitTestResults = sceneView.hitTest(tapLocation, types:.featurePoint)
+        let hitTestResults = sceneView.hitTest(tapLocation, types: .existingPlaneUsingExtent)
         
-        if let result = hitTestResults.first {
-            let position = SCNVector3.positionFrom(matrix: result.worldTransform)
-            let sphere = SCNSphere(color: self.nodeColor, radius: CGFloat(self.nodeRadius))
-            let node = SCNNode(geometry: sphere)
-            node.position = position;
-            sceneView.scene.rootNode.addChildNode(node)
-            nodes.append(node)
-        }
+        guard let hitTestResult = hitTestResults.first else { return }
+        let translation = hitTestResult.worldTransform.translation
+        let x = translation.x
+        let y = translation.y
+        let z = translation.z
+
+        let sphere = SCNSphere(color: self.nodeColor, radius: CGFloat(self.nodeRadius))
+        let sphereNode = SCNNode(geometry: sphere)
+        sphereNode.position = SCNVector3(x,y,z)
+        
+        sceneView.scene.rootNode.addChildNode(sphereNode)
+        nodes.append(sphereNode)
     }
     // Code Example from https://github.com/kravik/ArMeasureDemo/blob/master/ArMeasureDemo/ViewController.swift
     
@@ -151,5 +155,12 @@ extension SCNVector3 {
     static func positionFrom(matrix: matrix_float4x4) -> SCNVector3 {
         let column = matrix.columns.3
         return SCNVector3(column.x, column.y, column.z)
+    }
+}
+
+extension float4x4 {
+    var translation: float3 {
+        let translation = self.columns.3
+        return float3(translation.x, translation.y, translation.z)
     }
 }
