@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		98CC352C218DF3F10064F276 /* STOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CC352B218DF3F10064F276 /* STOnboardingViewController.swift */; };
 		98E004F9218DE9720054B7A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E004F8218DE9720054B7A4 /* AppDelegate.swift */; };
 		98E004FB218DE9720054B7A4 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 98E004FA218DE9720054B7A4 /* art.scnassets */; };
 		98E004FD218DE9720054B7A4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E004FC218DE9720054B7A4 /* ViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		98CC352B218DF3F10064F276 /* STOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STOnboardingViewController.swift; sourceTree = "<group>"; };
 		98E004F5218DE9720054B7A4 /* SwitchNTell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwitchNTell.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		98E004F8218DE9720054B7A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		98E004FA218DE9720054B7A4 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 				98E004F8218DE9720054B7A4 /* AppDelegate.swift */,
 				98E004FA218DE9720054B7A4 /* art.scnassets */,
 				98E004FC218DE9720054B7A4 /* ViewController.swift */,
+				98CC352B218DF3F10064F276 /* STOnboardingViewController.swift */,
 				98E004FE218DE9720054B7A4 /* Main.storyboard */,
 				98E00501218DE9740054B7A4 /* Assets.xcassets */,
 				98E00503218DE9740054B7A4 /* LaunchScreen.storyboard */,
@@ -141,6 +144,7 @@
 			files = (
 				98E004FD218DE9720054B7A4 /* ViewController.swift in Sources */,
 				98E004F9218DE9720054B7A4 /* AppDelegate.swift in Sources */,
+				98CC352C218DF3F10064F276 /* STOnboardingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,12 +289,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2HJ7P5WJ55;
 				INFOPLIST_FILE = SwitchNTell/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = i.SwitchNTell;
+				PRODUCT_BUNDLE_IDENTIFIER = i.SwitchNTell.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -302,12 +307,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2HJ7P5WJ55;
 				INFOPLIST_FILE = SwitchNTell/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = i.SwitchNTell;
+				PRODUCT_BUNDLE_IDENTIFIER = i.SwitchNTell.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
