@@ -52,5 +52,20 @@
             </objects>
             <point key="canvasLocation" x="1335" y="61"/>
         </scene>
+        <!--Board View Controller-->
+        <scene sceneID="nZh-fS-i05">
+            <objects>
+                <viewController id="Me8-E5-cx2" customClass="BoardViewController" customModule="SwitchNTell" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="D2e-Pd-vN0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="DIW-Ij-EvM"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bP8-De-ONw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2567" y="61"/>
+        </scene>
     </scenes>
 </document>
