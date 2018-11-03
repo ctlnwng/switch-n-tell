@@ -24,42 +24,54 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="607" y="37"/>
         </scene>
         <!--Onboarding View Controller-->
         <scene sceneID="Xqc-U9-7au">
             <objects>
-                <viewController id="OXQ-M4-Szw" customClass="STOnboardingViewController" customModule="SwitchNTell" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="STOnboarding" id="OXQ-M4-Szw" customClass="STOnboardingViewController" customModule="SwitchNTell" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fDO-ip-PoU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome. This is the onboarding page. " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O8p-z9-k5y">
-                                <rect key="frame" x="36.5" y="323" width="302" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Switch 'n Tell! We are so excited for you to play our game. Ready to start?!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O8p-z9-k5y">
+                                <rect key="frame" x="10" y="120" width="355" height="41"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f7P-bD-YhU">
-                                <rect key="frame" x="122" y="440" width="131" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Go to Board Setup "/>
-                                <connections>
-                                    <segue destination="Efu-FD-hjw" kind="show" id="s6x-bH-ypE"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TpA-rw-hi3">
-                                <rect key="frame" x="146" y="547" width="82" height="27"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TpA-rw-hi3">
+                                <rect key="frame" x="146" y="622" width="82" height="30"/>
                                 <state key="normal" title="Go to Board"/>
                                 <connections>
                                     <segue destination="565-Kb-04F" kind="show" id="bUU-uc-5m3"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f7P-bD-YhU">
+                                <rect key="frame" x="122" y="577" width="131" height="30"/>
+                                <state key="normal" title="Go to Board Setup "/>
+                                <connections>
+                                    <segue destination="Efu-FD-hjw" kind="show" id="s6x-bH-ypE"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PNt-eN-3bJ">
+                                <rect key="frame" x="157" y="457" width="61" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Let's Go!"/>
+                                <connections>
+                                    <segue destination="aRu-FX-71v" kind="show" id="W1d-gy-S0H"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="O8p-z9-k5y" firstAttribute="centerY" secondItem="fDO-ip-PoU" secondAttribute="centerY" id="DhM-S6-5uI"/>
-                            <constraint firstItem="O8p-z9-k5y" firstAttribute="centerX" secondItem="fDO-ip-PoU" secondAttribute="centerX" id="fov-I0-TSC"/>
+                            <constraint firstItem="hod-jh-WqG" firstAttribute="bottom" secondItem="TpA-rw-hi3" secondAttribute="bottom" constant="15" id="1WE-2z-OVt"/>
+                            <constraint firstItem="TpA-rw-hi3" firstAttribute="top" secondItem="f7P-bD-YhU" secondAttribute="bottom" constant="15" id="Ub7-jM-ns2"/>
+                            <constraint firstAttribute="trailing" secondItem="O8p-z9-k5y" secondAttribute="trailing" constant="10" id="cIt-B3-M7j"/>
+                            <constraint firstItem="O8p-z9-k5y" firstAttribute="top" secondItem="hod-jh-WqG" secondAttribute="top" constant="100" id="cNt-p4-NQF"/>
+                            <constraint firstItem="f7P-bD-YhU" firstAttribute="centerX" secondItem="fDO-ip-PoU" secondAttribute="centerX" id="kjd-GK-u7i"/>
+                            <constraint firstItem="TpA-rw-hi3" firstAttribute="centerX" secondItem="fDO-ip-PoU" secondAttribute="centerX" id="sYL-vv-PyF"/>
+                            <constraint firstItem="O8p-z9-k5y" firstAttribute="leading" secondItem="fDO-ip-PoU" secondAttribute="leading" constant="10" id="sYv-ft-Ie6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hod-jh-WqG"/>
                     </view>
@@ -67,6 +79,44 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="msj-Fx-jmX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1415" y="38"/>
+        </scene>
+        <!--Num Players Onboarding View Controller-->
+        <scene sceneID="Bn8-xp-mjc">
+            <objects>
+                <viewController id="aRu-FX-71v" customClass="STNumPlayersOnboardingViewController" customModule="SwitchNTell" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="T0q-vW-gr8">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How many people are playing?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qGn-2U-yin">
+                                <rect key="frame" x="71" y="120" width="233" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DAd-9L-K5G">
+                                <rect key="frame" x="139" y="205" width="85" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="qGn-2U-yin" firstAttribute="top" secondItem="UsZ-bl-1Fw" secondAttribute="top" constant="100" id="esI-xm-kPN"/>
+                            <constraint firstItem="qGn-2U-yin" firstAttribute="centerX" secondItem="T0q-vW-gr8" secondAttribute="centerX" id="uPa-pZ-ILC"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="UsZ-bl-1Fw"/>
+                    </view>
+                    <connections>
+                        <outlet property="numPlayersTextField" destination="DAd-9L-K5G" id="j3f-Ht-VZB"/>
+                        <segue destination="Efu-FD-hjw" kind="show" identifier="goToBoardSetup" id="PTC-ZP-4Fa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hyV-tZ-a7j" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2264.8000000000002" y="33.733133433283363"/>
         </scene>
         <!--Board Setup View Controller-->
         <scene sceneID="Ff7-iK-Cb4">
@@ -82,7 +132,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pbg-Wh-x0p" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2138" y="61"/>
+            <point key="canvasLocation" x="3153" y="37"/>
         </scene>
         <!--Board View Controller-->
         <scene sceneID="u3J-5O-yyJ">
@@ -98,7 +148,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EOe-6Y-hql" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2927" y="61"/>
+            <point key="canvasLocation" x="3882" y="37"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="s6x-bH-ypE"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -9,10 +9,12 @@
 import Foundation
 import UIKit
 
-class STOnboardingViewController : UIViewController {
+class STOnboardingViewController : UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        
     }
     
     
