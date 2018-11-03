@@ -2,9 +2,13 @@
 //  BoardSetupViewController.swift
 //  SwitchNTell
 //
+//  Handles setting up the board for a Switch-N-Tell game. i.e. finds a flat plane in the user's world and sets up the
+//  four corners of the board.
+//
 //  Created by Noah Appleby on 11/3/18.
 //  Copyright © 2018 SwitchNTell. All rights reserved.
 //
+//  Code sourced from example  https://github.com/kravik/ArMeasureDemo/blob/master/ArMeasureDemo/ViewController.swift
 
 import Foundation
 
@@ -16,14 +20,22 @@ import ARKit
 class BoardSetupViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
-    var onboarding: STOnboardingViewController?
     
+    //Plane to place on
     var plane : Plane?
+    
+    //Nodes to place on plane TODO: move to Plane class
+    var nodes: [SCNNode] = []
+    var nodeColor = UIColor.orange;
+    var nodeRadius = CGFloat.init(0.1);
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.setupNextVC()
+        //Create TapGesture Recognizer
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:)))
+        sceneView.addGestureRecognizer(tap)
+        
         // Set the view's delegate
         sceneView.delegate = self
         
@@ -32,39 +44,10 @@ class BoardSetupViewController: UIViewController, ARSCNViewDelegate {
         
         // Create a new scene
         let scene = SCNScene()
-        
         sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints, ARSCNDebugOptions.showWorldOrigin]
         
         // Set the scene to the view
         sceneView.scene = scene
-        
-    }
-    
-    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
-        //        DispatchQueue.main.async {
-        if let planeAnchor = anchor as? ARPlaneAnchor {
-            self.addPlane(node: node, anchor: planeAnchor)
-        }
-        //        }
-    }
-    
-    func addPlane(node: SCNNode, anchor: ARPlaneAnchor) {
-        //remove the existing plane from the scene
-        plane?.removeFromParentNode()
-    
-        //save the new plane
-        plane = Plane(anchor)
-        
-        //add the new plane to the scene
-        if let p = plane {
-            node.addChildNode(p)
-        }
-    }
-    
-    private func setupNextVC() {
-        //Create TapGesture Recognizer
-        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:)))
-        sceneView.addGestureRecognizer(tap)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -86,23 +69,29 @@ class BoardSetupViewController: UIViewController, ARSCNViewDelegate {
         sceneView.session.pause()
     }
     
-    // MARK: - ARSCNViewDelegate
+    // Render Functions - - - - - -
     
-    /*
-     // Override to create and configure nodes for anchors added to the view's session.
-     func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
-     let node = SCNNode()
-     
-     return node
-     }
-     */
+    //Handles rendering of a NEW node (ie: Add)
+    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
+        DispatchQueue.main.async {
+            if let planeAnchor = anchor as? ARPlaneAnchor {
+                self.switchPlane(node: node, anchor: planeAnchor)
+            }
+        }
+    }
     
+    //Handles rendering of an EXISTING node (ie: Update)
+    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
+        DispatchQueue.main.async {
+            if let planeAnchor = anchor as? ARPlaneAnchor {
+                self.updatePlane(node: node, anchor: planeAnchor)
+            }
+            
+        }
+    }
     
-    var nodes: [SCNNode] = []
-    
-    var nodeColor = UIColor.orange;
-    var nodeRadius = CGFloat.init(0.1);
-    
+    // Interaction Callbacks - - - - - -
+
     // MARK: Gesture handlers
     @objc func handleTap(sender: UITapGestureRecognizer) {
         
@@ -126,29 +115,28 @@ class BoardSetupViewController: UIViewController, ARSCNViewDelegate {
             nodes.append(sphereNode)
         }
     }
-    // Code Example from https://github.com/kravik/ArMeasureDemo/blob/master/ArMeasureDemo/ViewController.swift
     
-    
-    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
-        DispatchQueue.main.async {
-            if let planeAnchor = anchor as? ARPlaneAnchor {
-                self.updatePlane(anchor: planeAnchor, node: node)
-            }
-            
+    // Helper Methods - - - - - -
+
+    //helper function to switch to a new plane, removes the existing one (if present) and renders a new one
+    private func switchPlane(node: SCNNode, anchor: ARPlaneAnchor) {
+        //remove the existing plane from the scene
+        plane?.removeFromParentNode()
+        
+        //save the new plane
+        plane = Plane(anchor)
+        
+        //add the new plane to the scene
+        if let p = plane {
+            node.addChildNode(p)
         }
     }
     
-    func updatePlane(anchor: ARPlaneAnchor, node:SCNNode) {
+    //helper function to update the existing plane, i.e. extend it if more area was found
+    func updatePlane(node: SCNNode, anchor: ARPlaneAnchor) {
         //if this is not the current plane, we've seen it before, switch to it being the primary one
         if let p = plane, p.planeAnchor != anchor {
-            //TODO: dupe code
-            plane?.removeFromParentNode()
-            plane = Plane(anchor)
-            
-            //add the new plane to the scene
-            if let p = plane {
-                node.addChildNode(p)
-            }
+            switchPlane(node: node, anchor: anchor);
         }
         //extend the current plane
         plane?.update(anchor)
