@@ -18,6 +18,7 @@ class STNumPlayersOnboardingViewController : UIViewController, UITextFieldDelega
         
         super.viewDidLoad()
         self.numPlayersTextField.delegate = self
+        self.numPlayersTextField.keyboardType = .numbersAndPunctuation
         self.numPlayersTextField.becomeFirstResponder()
     }
     
@@ -29,6 +30,7 @@ class STNumPlayersOnboardingViewController : UIViewController, UITextFieldDelega
             self.numPlayersTextField.becomeFirstResponder()
         }
         self.numPlayers = numPlayersTextField.text
+        self.performSegue(withIdentifier: "goToBoardSetup", sender: nil)
         return true
     }
     

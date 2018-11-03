@@ -29,7 +29,7 @@
         <!--Onboarding View Controller-->
         <scene sceneID="Xqc-U9-7au">
             <objects>
-                <viewController id="OXQ-M4-Szw" customClass="STOnboardingViewController" customModule="SwitchNTell" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="STOnboarding" id="OXQ-M4-Szw" customClass="STOnboardingViewController" customModule="SwitchNTell" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fDO-ip-PoU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -102,25 +102,17 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uAr-18-tp1">
-                                <rect key="frame" x="169.5" y="587" width="36" height="30"/>
-                                <state key="normal" title="Next "/>
-                                <connections>
-                                    <segue destination="Efu-FD-hjw" kind="show" identifier="goToBoardSetup" id="SWV-gt-aQW"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="UsZ-bl-1Fw" firstAttribute="bottom" secondItem="uAr-18-tp1" secondAttribute="bottom" constant="50" id="ZeL-my-yvw"/>
                             <constraint firstItem="qGn-2U-yin" firstAttribute="top" secondItem="UsZ-bl-1Fw" secondAttribute="top" constant="100" id="esI-xm-kPN"/>
                             <constraint firstItem="qGn-2U-yin" firstAttribute="centerX" secondItem="T0q-vW-gr8" secondAttribute="centerX" id="uPa-pZ-ILC"/>
-                            <constraint firstItem="uAr-18-tp1" firstAttribute="centerX" secondItem="T0q-vW-gr8" secondAttribute="centerX" id="x2Y-Oh-hDB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="UsZ-bl-1Fw"/>
                     </view>
                     <connections>
                         <outlet property="numPlayersTextField" destination="DAd-9L-K5G" id="j3f-Ht-VZB"/>
+                        <segue destination="Efu-FD-hjw" kind="show" identifier="goToBoardSetup" id="PTC-ZP-4Fa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hyV-tZ-a7j" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -161,6 +153,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="s6x-bH-ypE"/>
+        <segue reference="PTC-ZP-4Fa"/>
     </inferredMetricsTieBreakers>
 </document>
