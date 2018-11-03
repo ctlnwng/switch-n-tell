@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3101839E218DF2DC00BD4CE0 /* BoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3101839D218DF2DC00BD4CE0 /* BoardViewController.swift */; };
 		98CC352C218DF3F10064F276 /* STOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CC352B218DF3F10064F276 /* STOnboardingViewController.swift */; };
+		7DC4EADC218E135E00BB2F75 /* Plane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC4EADB218E135E00BB2F75 /* Plane.swift */; };
 		98E004F9218DE9720054B7A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E004F8218DE9720054B7A4 /* AppDelegate.swift */; };
 		98E004FB218DE9720054B7A4 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 98E004FA218DE9720054B7A4 /* art.scnassets */; };
 		98E004FD218DE9720054B7A4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E004FC218DE9720054B7A4 /* ViewController.swift */; };
@@ -20,6 +21,7 @@
 /* Begin PBXFileReference section */
 		3101839D218DF2DC00BD4CE0 /* BoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewController.swift; sourceTree = "<group>"; };
 		98CC352B218DF3F10064F276 /* STOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STOnboardingViewController.swift; sourceTree = "<group>"; };
+		7DC4EADB218E135E00BB2F75 /* Plane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plane.swift; sourceTree = "<group>"; };
 		98E004F5218DE9720054B7A4 /* SwitchNTell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwitchNTell.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		98E004F8218DE9720054B7A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		98E004FA218DE9720054B7A4 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -41,6 +43,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7DC4EADA218E134F00BB2F75 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				7DC4EADB218E135E00BB2F75 /* Plane.swift */,
+			);
+			path = Objects;
+			sourceTree = "<group>";
+		};
 		98E004EC218DE9720054B7A4 = {
 			isa = PBXGroup;
 			children = (
@@ -60,6 +70,7 @@
 		98E004F7218DE9720054B7A4 /* SwitchNTell */ = {
 			isa = PBXGroup;
 			children = (
+				7DC4EADA218E134F00BB2F75 /* Objects */,
 				98E004F8218DE9720054B7A4 /* AppDelegate.swift */,
 				98E004FA218DE9720054B7A4 /* art.scnassets */,
 				98E004FC218DE9720054B7A4 /* ViewController.swift */,
@@ -146,6 +157,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				98E004FD218DE9720054B7A4 /* ViewController.swift in Sources */,
+				7DC4EADC218E135E00BB2F75 /* Plane.swift in Sources */,
 				98E004F9218DE9720054B7A4 /* AppDelegate.swift in Sources */,
 				3101839E218DF2DC00BD4CE0 /* BoardViewController.swift in Sources */,
 				98CC352C218DF3F10064F276 /* STOnboardingViewController.swift in Sources */,
