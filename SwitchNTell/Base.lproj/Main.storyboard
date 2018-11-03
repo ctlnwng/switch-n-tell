@@ -34,9 +34,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O8p-z9-k5y">
-                                <rect key="frame" x="5" y="120" width="365" height="61"/>
-                                <string key="text">Welcome to Switch 'n Tell! We are so excited for you to play our game. Before we play though, we need to know how many people are playing: </string>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Switch 'n Tell! We are so excited for you to play our game. Ready to start?!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O8p-z9-k5y">
+                                <rect key="frame" x="10" y="120" width="355" height="41"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -68,11 +67,11 @@
                         <constraints>
                             <constraint firstItem="hod-jh-WqG" firstAttribute="bottom" secondItem="TpA-rw-hi3" secondAttribute="bottom" constant="15" id="1WE-2z-OVt"/>
                             <constraint firstItem="TpA-rw-hi3" firstAttribute="top" secondItem="f7P-bD-YhU" secondAttribute="bottom" constant="15" id="Ub7-jM-ns2"/>
-                            <constraint firstAttribute="trailing" secondItem="O8p-z9-k5y" secondAttribute="trailing" constant="5" id="cIt-B3-M7j"/>
+                            <constraint firstAttribute="trailing" secondItem="O8p-z9-k5y" secondAttribute="trailing" constant="10" id="cIt-B3-M7j"/>
                             <constraint firstItem="O8p-z9-k5y" firstAttribute="top" secondItem="hod-jh-WqG" secondAttribute="top" constant="100" id="cNt-p4-NQF"/>
                             <constraint firstItem="f7P-bD-YhU" firstAttribute="centerX" secondItem="fDO-ip-PoU" secondAttribute="centerX" id="kjd-GK-u7i"/>
                             <constraint firstItem="TpA-rw-hi3" firstAttribute="centerX" secondItem="fDO-ip-PoU" secondAttribute="centerX" id="sYL-vv-PyF"/>
-                            <constraint firstItem="O8p-z9-k5y" firstAttribute="leading" secondItem="fDO-ip-PoU" secondAttribute="leading" constant="5" id="sYv-ft-Ie6"/>
+                            <constraint firstItem="O8p-z9-k5y" firstAttribute="leading" secondItem="fDO-ip-PoU" secondAttribute="leading" constant="10" id="sYv-ft-Ie6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hod-jh-WqG"/>
                     </view>
@@ -153,6 +152,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="PTC-ZP-4Fa"/>
+        <segue reference="s6x-bH-ypE"/>
     </inferredMetricsTieBreakers>
 </document>
