@@ -36,6 +36,8 @@ class BoardViewController: UIViewController, ARSCNViewDelegate {
         setUpSceneView();
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         self.addInstructions()
+        self.shuffleButton()
+        self.cancelButton()
     }
 
     private func addInstructions() {
@@ -49,6 +51,33 @@ class BoardViewController: UIViewController, ARSCNViewDelegate {
         view.textColor = UIColor.white
         view.frame = CGRect.init(x: self.view.frame.minX, y: topMargin, width: self.view.frame.width, height: instructionsHeight)
         self.view.addSubview(view)
+    }
+    
+    private func shuffleButton()
+    {
+        let shuffleButton = UIButton.init(type: UIButtonType.custom)
+        shuffleButton.frame = CGRect.init(x: self.view.frame.midX, y: self.view.frame.maxY - 40, width: 50, height: 100)
+        shuffleButton.setTitle("Shuffle", for: .normal)
+        shuffleButton.setTitleColor(UIColor.red, for: .normal)
+        shuffleButton.backgroundColor = UIColor.gray
+        shuffleButton.addTarget(self, action: #selector(shuffle), for: UIControlEvents.touchDown)
+        
+        self.view.addSubview(shuffleButton)
+    }
+    
+    @objc private func shuffle() {
+        
+    }
+    
+    private func cancelButton()
+    {
+        let shuffleButton = UIButton.init(type: UIButtonType.custom)
+        shuffleButton.frame = CGRect.init(x: self.view.frame.midX - 50, y: self.view.frame.maxY - 40, width: 50, height: 100)
+        shuffleButton.setTitle("Cancel", for: .normal)
+        shuffleButton.setTitleColor(UIColor.red, for: .normal)
+        shuffleButton.backgroundColor = UIColor.blue
+        
+        self.view.addSubview(shuffleButton)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
