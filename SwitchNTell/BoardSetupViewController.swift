@@ -22,13 +22,14 @@ class BoardSetupViewController: UIViewController, ARSCNViewDelegate {
     @IBOutlet var sceneView: ARSCNView!
     var onboarding: STOnboardingViewController?
     var instructionsLabel: UILabel?
-    var instructionsView: UILabel?
     
     //Board to place on
     var board : Board?
     var plane : Plane?
     
+    var saveButton: UIButton?
     var shuffleButton: UIButton?
+    
     var boardWidth:CGFloat = 4.0
     
     var inGameState: Bool?
@@ -66,21 +67,20 @@ class BoardSetupViewController: UIViewController, ARSCNViewDelegate {
         // Run the view's session
         sceneView.session.run(configuration)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
+        
         self.addSetupInstructions()
-        if (inGameState!) {
-            self.addInstructions()
-        }
-        self.saveButton()
+        self.goForwardButton()
+        self.endGameButton()
         self.cancelButton()
-    
     }
     
-    private func addInstructions() {
+    
+    private func addSetupInstructions() {
         let topMargin: CGFloat = 15
         let instructionsHeight: CGFloat = 100
-        self.instructionsView = UILabel.init()
-        if let view = self.instructionsView {
-            view.text = STStringConstants.getGamePlayInstructions()
+        self.instructionsLabel = UILabel.init()
+        if let view = self.instructionsLabel {
+            view.text = STStringConstants.getSetupBoardInstructions()
             view.numberOfLines = 0
             view.textAlignment = NSTextAlignment.center
             view.backgroundColor = UIColor.gray
@@ -90,21 +90,37 @@ class BoardSetupViewController: UIViewController, ARSCNViewDelegate {
         }
     }
     
-    private func saveButton()
+    
+    private func goForwardButton()
+    {
+        saveButton = UIButton.init(type: UIButtonType.custom)
+        saveButton?.frame = CGRect.init(x: self.view.frame.midX, y: self.view.frame.maxY - 40, width: 50, height: 100)
+        saveButton?.setTitle("Shuffle", for: .normal)
+        saveButton?.setTitleColor(UIColor.red, for: .normal)
+        saveButton?.backgroundColor = UIColor.gray
+        saveButton?.addTarget(self, action: #selector(goForward), for: UIControlEvents.touchDown)
+        
+        if let subView = self.saveButton
+        {
+            self.view.addSubview(subView)
+        }
+        
+        saveButton?.isHidden = true
+    }
+    
+    private func endGameButton()
     {
         shuffleButton = UIButton.init(type: UIButtonType.custom)
         shuffleButton?.frame = CGRect.init(x: self.view.frame.midX, y: self.view.frame.maxY - 40, width: 50, height: 100)
         shuffleButton?.setTitle("Shuffle", for: .normal)
         shuffleButton?.setTitleColor(UIColor.red, for: .normal)
         shuffleButton?.backgroundColor = UIColor.gray
-        if (!inGameState!) {
-            shuffleButton?.addTarget(self, action: #selector(goForward), for: UIControlEvents.touchDown)
-        }
-        else {
-            shuffleButton?.addTarget(self, action: #selector(shuffle), for: UIControlEvents.touchDown)
-        }
+        shuffleButton?.addTarget(self, action: #selector(shuffle), for: UIControlEvents.touchDown)
         
-        self.view.addSubview(shuffleButton!)
+        if let subView = self.shuffleButton
+        {
+            self.view.addSubview(subView)
+        }
         
         shuffleButton?.isHidden = true
     }
@@ -123,42 +139,24 @@ class BoardSetupViewController: UIViewController, ARSCNViewDelegate {
     
     @objc func goForward() {
         addGameSpaces()
+        saveButton?.isHidden = true
+        shuffleButton?.isHidden = false
+        
+        self.instructionsLabel?.text = STStringConstants.getGamePlayInstructions()
     }
     
     @objc private func shuffle() {
         if let n = Int(STSettings.instance().numPlayers) {
             let num = arc4random_uniform(UInt32(n)) + 1
-            if let view = self.instructionsView
+            if let view = self.instructionsLabel
             {
                 view.text = "Player " + String(num)
             }
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "goToBoard" {
-            let board = segue.destination as? BoardViewController
-            board?.plane = self.plane
-        }
-    }
-    
     @objc func onCancelPressed() {
         self.navigationController?.popViewController(animated: true)
-    }
-    
-    private func addSetupInstructions() {
-        let topMargin: CGFloat = 15
-        let instructionsHeight: CGFloat = 60
-        self.instructionsLabel = UILabel.init()
-        if let view = self.instructionsLabel {
-        view.text = STStringConstants.getSetupBoardInstructions()
-        view.numberOfLines = 0
-        view.textAlignment = NSTextAlignment.center
-        view.backgroundColor = UIColor.gray
-        view.textColor = UIColor.white
-        view.frame = CGRect.init(x: self.view.frame.minX, y: topMargin, width: self.view.frame.width, height: instructionsHeight)
-        self.view.addSubview(view)
-        }
     }
     
     // PRAGMA MARK for noah
@@ -224,7 +222,7 @@ class BoardSetupViewController: UIViewController, ARSCNViewDelegate {
         let doneWithSetup = plane?.interactNode(sphereNode: hitTestResult2.node as? SphereNode, rootNode: sceneView.scene.rootNode, numPlayers: Int(STSettings.instance().numPlayers)!)
         
         if(doneWithSetup != nil) {
-            shuffleButton?.isHidden = false
+            saveButton?.isHidden = false
             inGameState = true
         }
     }
@@ -282,7 +280,7 @@ class BoardSetupViewController: UIViewController, ARSCNViewDelegate {
             let angle = CGFloat(n) * degApart
             let xyCoord = polarToCartesian(angle: angle, radius: radius, center: center)
             
-            let gameSpace:GameSpace = GameSpace(x: xyCoord.x, y: CGFloat(center.y), z: xyCoord.y, questionString: questions[n])
+            let gameSpace:GameSpace = GameSpace(x: xyCoord.x, y: CGFloat(center.y), z: xyCoord.y, questionString: questions[n], idx: String(n + 1))
             
             gameSpaces.append(gameSpace)
         }

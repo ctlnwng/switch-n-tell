@@ -20,7 +20,7 @@ class GameSpace: SCNNode {
     
     var colors: [UIColor] = [UIColor.customBlue, UIColor.customTeal, UIColor.customGreen, UIColor.customPurple, UIColor.customYellow]
     
-    init(x: CGFloat, y: CGFloat, z: CGFloat, questionString: String) {
+    init(x: CGFloat, y: CGFloat, z: CGFloat, questionString: String, idx: String) {
         let material = SCNMaterial()
         material.diffuse.contents = colors.randomElement()!
         
@@ -32,7 +32,7 @@ class GameSpace: SCNNode {
         self.sphereNode.position = SCNVector3(x: Float(x), y: Float(y), z: Float(z))
         
         // Question
-        self.question = SCNText(string: questionString, extrusionDepth: 0.0)
+        self.question = SCNText(string: idx + ". " + questionString, extrusionDepth: 0.0)
         self.question.font = UIFont (name: "Avenir-Medium", size: 6)
         self.question.containerFrame = CGRect(origin: CGPoint(x: CGFloat(sphereNode.position.x), y: CGFloat(sphereNode.position.y)), size: CGSize(width: sphere.radius * 200, height: 100.0))
         self.question.isWrapped = true
