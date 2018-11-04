@@ -18,11 +18,9 @@ class GameSpace: SCNNode {
     var question: SCNText
     var questionNode: SCNNode
     
-    var colors: [UIColor] = [UIColor.customTeal, UIColor.customGreen, UIColor.customPurple, UIColor.customYellow]
-    
     init(x: CGFloat, y: CGFloat, z: CGFloat, questionString: String, idx: String) {
         let material = SCNMaterial()
-        material.diffuse.contents = colors.randomElement()!
+        material.diffuse.contents = UIColor.transparentBlack
         
         // Circle
         self.sphere = SCNSphere(radius: 0.18)

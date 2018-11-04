@@ -31,13 +31,9 @@ class BoardSetupViewController: UIViewController, ARSCNViewDelegate {
     var shuffleButton: UIButton?
     
     var boardWidth:CGFloat = 4.0
-    
-    var inGameState: Bool?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        inGameState = false
         
         //Create TapGesture Recognizer
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:)))
@@ -47,11 +43,12 @@ class BoardSetupViewController: UIViewController, ARSCNViewDelegate {
         sceneView.delegate = self
         
         // Show statistics such as fps and timing information
-        sceneView.showsStatistics = true
+        sceneView.showsStatistics = false
         
         // Create a new scene
         let scene = SCNScene()
         sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
+        
         
         // Set the scene to the view
         sceneView.scene = scene
@@ -151,6 +148,8 @@ class BoardSetupViewController: UIViewController, ARSCNViewDelegate {
         addGameSpaces()
         saveButton?.isHidden = true
         shuffleButton?.isHidden = false
+        plane?.removeFromParentNode()
+        plane?.isHidden = true
         
         self.instructionsLabel?.text = STStringConstants.getGamePlayInstructions()
     }
@@ -160,7 +159,7 @@ class BoardSetupViewController: UIViewController, ARSCNViewDelegate {
             let num = arc4random_uniform(UInt32(n)) + 1
             if let view = self.instructionsLabel
             {
-                view.text = "Player " + String(num) + " must answer their question 😱."
+                view.text = "The player at Question " + String(num) + " must answer that question 😱."
             }
         }
     }
@@ -216,7 +215,7 @@ class BoardSetupViewController: UIViewController, ARSCNViewDelegate {
             if(hitTestResult.anchor == plane?.anchor) {
                 let translation = hitTestResult.worldTransform.translation
                 let x = translation.x
-                let y = translation.y
+                let y = translation.y + 0.2
                 let z = translation.z
                 
                 //TODO: yuck, should just do a relative location but tired
@@ -233,7 +232,6 @@ class BoardSetupViewController: UIViewController, ARSCNViewDelegate {
         
         if(doneWithSetup != nil) {
             saveButton?.isHidden = false
-            inGameState = true
         }
     }
     
@@ -282,6 +280,7 @@ class BoardSetupViewController: UIViewController, ARSCNViewDelegate {
         }
         rugNode.scale = SCNVector3(0.01, 0.01, 0.01)
         rugNode.position = (plane?.cord1?.position.midpoint(to: (plane?.cord3?.position)!))!
+        rugNode.position.y = rugNode.position.y - 0.2
 
         sceneView.scene.rootNode.addChildNode(rugNode)
     }
@@ -336,22 +335,6 @@ extension UIColor {
     
     class var customRed: UIColor {
         return UIColor(red:0.80, green:0.25, blue:0.25, alpha:1.0)
-    }
-    
-    class var customTeal: UIColor {
-        return UIColor(red:0.31, green:0.77, blue:0.72, alpha:1.0)
-    }
-    
-    class var customPurple: UIColor {
-        return UIColor(red:0.33, green:0.23, blue:0.44, alpha:1.0)
-    }
-    
-    class var customGreen: UIColor {
-        return UIColor(red:0.61, green:0.93, blue:0.36, alpha:1.0)
-    }
-    
-    class var customYellow: UIColor {
-        return UIColor(red:0.94, green:0.96, blue:0.40, alpha:1.0)
     }
     
     class var transparentBlack: UIColor {
