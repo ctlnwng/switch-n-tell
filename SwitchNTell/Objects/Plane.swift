@@ -59,7 +59,8 @@ class Plane: SCNNode {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func addCord(cordPosition: SCNVector3, rootNode: SCNNode) {
+    func addCord(cordPosition: SCNVector3, rootNode: SCNNode, numPlayers: Int) {
+        let halfLength = Float(numPlayers) / 4.0;
         let sphere = SCNSphere(color: self.nodeColor, radius: CGFloat(self.nodeRadius))
         let tempSphere = SCNSphere(color: self.tempNodeColor, radius: CGFloat(self.nodeRadius))
 
@@ -68,10 +69,10 @@ class Plane: SCNNode {
         if(cord1 == nil && cord2 == nil && cord3 == nil && cord4 == nil) {
             cord1 = SphereNode(sphere: sphere, position: cordPosition)
             //make three options around it
-            tempCord1 = SphereNode(sphere: tempSphere, position: SCNVector3(cordPosition.x + 1, cordPosition.y, cordPosition.z))
-            tempCord2 = SphereNode(sphere: tempSphere, position: SCNVector3(cordPosition.x, cordPosition.y, cordPosition.z + 1))
-            tempCord3 = SphereNode(sphere: tempSphere, position: SCNVector3(cordPosition.x - 1, cordPosition.y, cordPosition.z))
-            tempCord4 = SphereNode(sphere: tempSphere, position: SCNVector3(cordPosition.x, cordPosition.y, cordPosition.z - 1))
+            tempCord1 = SphereNode(sphere: tempSphere, position: SCNVector3(cordPosition.x + halfLength, cordPosition.y, cordPosition.z))
+            tempCord2 = SphereNode(sphere: tempSphere, position: SCNVector3(cordPosition.x, cordPosition.y, cordPosition.z + halfLength))
+            tempCord3 = SphereNode(sphere: tempSphere, position: SCNVector3(cordPosition.x - halfLength, cordPosition.y, cordPosition.z))
+            tempCord4 = SphereNode(sphere: tempSphere, position: SCNVector3(cordPosition.x, cordPosition.y, cordPosition.z - halfLength))
 
             if let c1 = cord1, let tc1 = tempCord1, let tc2 = tempCord2, let tc3 = tempCord3, let tc4 = tempCord4 {
                 rootNode.addChildNode(c1)
@@ -85,7 +86,8 @@ class Plane: SCNNode {
         //TODO TODO add to cord object depending on...
     }
     
-    func interactNode(sphereNode: SphereNode?, rootNode: SCNNode){
+    func interactNode(sphereNode: SphereNode?, rootNode: SCNNode, numPlayers: Int) -> Bool {
+        let halfLength = Float(numPlayers) / 4.0;
         let sphere = SCNSphere(color: self.nodeColor, radius: CGFloat(self.nodeRadius)) //TODO: repeat
         let tempSphere = SCNSphere(color: self.tempNodeColor, radius: CGFloat(self.nodeRadius)) //TODO: repeat
 
@@ -107,12 +109,12 @@ class Plane: SCNNode {
                 
                 //make three options around it
                 if(cord1?.position.z == cord2?.position.z) {
-                    tempCord1 = SphereNode(sphere: tempSphere, position: SCNVector3(cordPosition.x, cordPosition.y, cordPosition.z + 1))
-                    tempCord2 = SphereNode(sphere: tempSphere, position: SCNVector3(cordPosition.x, cordPosition.y, cordPosition.z - 1))
+                    tempCord1 = SphereNode(sphere: tempSphere, position: SCNVector3(cordPosition.x, cordPosition.y, cordPosition.z + halfLength))
+                    tempCord2 = SphereNode(sphere: tempSphere, position: SCNVector3(cordPosition.x, cordPosition.y, cordPosition.z - halfLength))
                 }
                 else if(cord1?.position.x == cord2?.position.x)  {
-                    tempCord1 = SphereNode(sphere: tempSphere, position: SCNVector3(cordPosition.x + 1, cordPosition.y, cordPosition.z))
-                    tempCord2 = SphereNode(sphere: tempSphere, position: SCNVector3(cordPosition.x - 1, cordPosition.y, cordPosition.z))
+                    tempCord1 = SphereNode(sphere: tempSphere, position: SCNVector3(cordPosition.x + halfLength, cordPosition.y, cordPosition.z))
+                    tempCord2 = SphereNode(sphere: tempSphere, position: SCNVector3(cordPosition.x - halfLength, cordPosition.y, cordPosition.z))
                 }
                 
                 if let tc1 = tempCord1, let tc2 = tempCord2 {
@@ -134,11 +136,11 @@ class Plane: SCNNode {
                 }
                 if let c4 = cord4 {
                     rootNode.addChildNode(c4)
-                    //TODO: PASS TO BOARD VIEW CONTROLLER (CAITLIN HELLO!)
+                    return true
                 }
             }
         }
-        
+        return false
     }
     
     private func setNextNode(nextNode: SphereNode) -> SphereNode {

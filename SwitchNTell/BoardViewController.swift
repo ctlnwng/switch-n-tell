@@ -13,8 +13,9 @@ import ARKit
 class BoardViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
-    var boardWidth:Float = 4.0
+    var boardWidth:CGFloat = 4.0
     var instructionsView: UILabel?
+    var plane: Plane?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +31,8 @@ class BoardViewController: UIViewController, ARSCNViewDelegate {
         let scene = SCNScene()
         
         let gameSpaces:[GameSpace] = createGameSpaces(numPlayers: numPlayers!)
+        
+        boardWidth = (plane?.cord1?.position.distance(to: (plane?.cord2?.position)!))!
         
         for space in gameSpaces {
             scene.rootNode.addChildNode(space)
@@ -123,15 +126,17 @@ class BoardViewController: UIViewController, ARSCNViewDelegate {
     func createGameSpaces(numPlayers: Int) -> [GameSpace] {
         var gameSpaces: [GameSpace] = []
         
-        let degApart:CGFloat = 360 / CGFloat(numPlayers)
+        
+        let degApart: CGFloat = 360 / CGFloat(numPlayers)
+        let center: SCNVector3 = (plane?.cord1?.position.midpoint(to: (plane?.cord3?.position)!))!
         let radius = CGFloat(boardWidth / 2.0)
         let questions = QuestionManager.getNRandomQuestions(n: numPlayers)
 
         for n in 0...(numPlayers - 1) {
             let angle = CGFloat(n) * degApart
-            let xyCoord = polarToCartesian(angle: angle, radius: radius)
+            let xyCoord = polarToCartesian(angle: angle, radius: radius, center: center)
             
-            let gameSpace:GameSpace = GameSpace(x: xyCoord.x, y: 0, z: xyCoord.y - radius, questionString: questions[n])
+            let gameSpace:GameSpace = GameSpace(x: xyCoord.x, y: CGFloat(center.y), z: xyCoord.y, questionString: questions[n])
             
             gameSpaces.append(gameSpace)
         }
@@ -139,26 +144,15 @@ class BoardViewController: UIViewController, ARSCNViewDelegate {
         return gameSpaces
     }
     
-    func polarToCartesian(angle: CGFloat, radius: CGFloat) -> CGPoint {
-        let x: CGFloat = radius * cos(degToRad(angle: angle))
-        let z: CGFloat = radius * sin(degToRad(angle: angle))
+    func polarToCartesian(angle: CGFloat, radius: CGFloat, center: SCNVector3) -> CGPoint {
+        let x: CGFloat = (radius * cos(degToRad(angle: angle))) + CGFloat(center.x)
+        let z: CGFloat = radius * sin(degToRad(angle: angle)) + CGFloat(center.z)
         return CGPoint(x: x, y: z)
     }
     
     func degToRad(angle: CGFloat) -> CGFloat {
         return angle * .pi / 180
     }
-
-    // MARK: - ARSCNViewDelegate
- 
-    /*
-     // Override to create and configure nodes for anchors added to the view's session.
-     func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
-     let node = SCNNode()
-
-     return node
-     }
-     */
 
     func session(_ session: ARSession, didFailWithError error: Error) {
         // Present an error message to the user
@@ -173,28 +167,5 @@ class BoardViewController: UIViewController, ARSCNViewDelegate {
     func sessionInterruptionEnded(_ session: ARSession) {
         // Reset tracking and/or remove existing anchors if consistent tracking is required
 
-    }
-}
-
-extension UIColor {
-    
-    class var customBlue: UIColor {
-        return UIColor(red:0.37, green:0.49, blue:0.89, alpha:1.0)
-    }
-    
-    class var customTeal: UIColor {
-        return UIColor(red:0.31, green:0.77, blue:0.72, alpha:1.0)
-    }
-    
-    class var customPurple: UIColor {
-        return UIColor(red:0.33, green:0.23, blue:0.44, alpha:1.0)
-    }
-    
-    class var customGreen: UIColor {
-        return UIColor(red:0.61, green:0.93, blue:0.36, alpha:1.0)
-    }
-    
-    class var customYellow: UIColor {
-        return UIColor(red:0.94, green:0.96, blue:0.40, alpha:1.0)
     }
 }
