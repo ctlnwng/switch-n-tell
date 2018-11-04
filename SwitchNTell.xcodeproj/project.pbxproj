@@ -12,10 +12,12 @@
 		7DC4EADE218E18C400BB2F75 /* BoardSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC4EADD218E18C400BB2F75 /* BoardSetupViewController.swift */; };
 		7DC4EAE2218E231300BB2F75 /* plane_grid.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DC4EAE1218E231300BB2F75 /* plane_grid.png */; };
 		7DC4EAE4218E44A800BB2F75 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC4EAE3218E44A800BB2F75 /* Board.swift */; };
+		989E4682218E44AC00D4A674 /* STSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989E4681218E44AC00D4A674 /* STSettings.swift */; };
+		989E4684218E6E9E00D4A674 /* STStringConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989E4683218E6E9E00D4A674 /* STStringConstants.swift */; };
 		98CC352C218DF3F10064F276 /* STOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CC352B218DF3F10064F276 /* STOnboardingViewController.swift */; };
+		98CC3532218E40AB0064F276 /* STNumPlayersOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CC3531218E40AB0064F276 /* STNumPlayersOnboardingViewController.swift */; };
 		98E004F9218DE9720054B7A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E004F8218DE9720054B7A4 /* AppDelegate.swift */; };
 		98E004FB218DE9720054B7A4 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 98E004FA218DE9720054B7A4 /* art.scnassets */; };
-		98E004FD218DE9720054B7A4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E004FC218DE9720054B7A4 /* ViewController.swift */; };
 		98E00500218DE9720054B7A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98E004FE218DE9720054B7A4 /* Main.storyboard */; };
 		98E00502218DE9740054B7A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 98E00501218DE9740054B7A4 /* Assets.xcassets */; };
 		98E00505218DE9740054B7A4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98E00503218DE9740054B7A4 /* LaunchScreen.storyboard */; };
@@ -27,11 +29,13 @@
 		7DC4EADD218E18C400BB2F75 /* BoardSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardSetupViewController.swift; sourceTree = "<group>"; };
 		7DC4EAE1218E231300BB2F75 /* plane_grid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plane_grid.png; sourceTree = "<group>"; };
 		7DC4EAE3218E44A800BB2F75 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
+		989E4681218E44AC00D4A674 /* STSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STSettings.swift; sourceTree = "<group>"; };
+		989E4683218E6E9E00D4A674 /* STStringConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = STStringConstants.swift; path = SwitchNTell/STStringConstants.swift; sourceTree = "<group>"; };
 		98CC352B218DF3F10064F276 /* STOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STOnboardingViewController.swift; sourceTree = "<group>"; };
+		98CC3531218E40AB0064F276 /* STNumPlayersOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STNumPlayersOnboardingViewController.swift; sourceTree = "<group>"; };
 		98E004F5218DE9720054B7A4 /* SwitchNTell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwitchNTell.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		98E004F8218DE9720054B7A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		98E004FA218DE9720054B7A4 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
-		98E004FC218DE9720054B7A4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		98E004FF218DE9720054B7A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		98E00501218DE9740054B7A4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		98E00504218DE9740054B7A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -54,6 +58,7 @@
 			children = (
 				7DC4EADB218E135E00BB2F75 /* Plane.swift */,
 				7DC4EAE3218E44A800BB2F75 /* Board.swift */,
+				989E4681218E44AC00D4A674 /* STSettings.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -69,6 +74,7 @@
 		98E004EC218DE9720054B7A4 = {
 			isa = PBXGroup;
 			children = (
+				989E4683218E6E9E00D4A674 /* STStringConstants.swift */,
 				98E004F7218DE9720054B7A4 /* SwitchNTell */,
 				98E004F6218DE9720054B7A4 /* Products */,
 			);
@@ -89,8 +95,8 @@
 				7DC4EADA218E134F00BB2F75 /* Objects */,
 				98E004F8218DE9720054B7A4 /* AppDelegate.swift */,
 				98E004FA218DE9720054B7A4 /* art.scnassets */,
-				98E004FC218DE9720054B7A4 /* ViewController.swift */,
 				3101839D218DF2DC00BD4CE0 /* BoardViewController.swift */,
+				98CC3531218E40AB0064F276 /* STNumPlayersOnboardingViewController.swift */,
 				98CC352B218DF3F10064F276 /* STOnboardingViewController.swift */,
 				98E004FE218DE9720054B7A4 /* Main.storyboard */,
 				98E00501218DE9740054B7A4 /* Assets.xcassets */,
@@ -174,11 +180,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				98E004FD218DE9720054B7A4 /* ViewController.swift in Sources */,
+				98CC3532218E40AB0064F276 /* STNumPlayersOnboardingViewController.swift in Sources */,
 				7DC4EADC218E135E00BB2F75 /* Plane.swift in Sources */,
+				989E4682218E44AC00D4A674 /* STSettings.swift in Sources */,
 				98E004F9218DE9720054B7A4 /* AppDelegate.swift in Sources */,
 				7DC4EADE218E18C400BB2F75 /* BoardSetupViewController.swift in Sources */,
 				7DC4EAE4218E44A800BB2F75 /* Board.swift in Sources */,
+				989E4684218E6E9E00D4A674 /* STStringConstants.swift in Sources */,
 				3101839E218DF2DC00BD4CE0 /* BoardViewController.swift in Sources */,
 				98CC352C218DF3F10064F276 /* STOnboardingViewController.swift in Sources */,
 			);
