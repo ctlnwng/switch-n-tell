@@ -15,10 +15,10 @@ import ARKit
 class Plane: SCNNode {
     var anchor: ARPlaneAnchor
     
-    var nodeColor = UIColor.green;
-    var tempNodeColor = UIColor.orange;
+    var nodeColor = UIColor.primaryColor;
+    var tempNodeColor = UIColor.customRed;
 
-    var nodeRadius = CGFloat.init(0.1);
+    var nodeRadius = CGFloat.init(0.05);
     
     var planeGeometry: SCNPlane
     var planeNode: SCNNode
