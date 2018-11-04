@@ -25,7 +25,7 @@ class GameSpace: SCNNode {
         material.diffuse.contents = colors.randomElement()!
         
         // Circle
-        self.sphere = SCNSphere(radius: 0.2)
+        self.sphere = SCNSphere(radius: 0.15)
         self.sphere.materials = [material]
         
         self.sphereNode = SCNNode(geometry: sphere)
@@ -33,7 +33,7 @@ class GameSpace: SCNNode {
         
         // Question
         self.question = SCNText(string: idx + ". " + questionString, extrusionDepth: 0.0)
-        self.question.font = UIFont (name: "Avenir-Medium", size: 6)
+        self.question.font = UIFont (name: "Avenir-Medium", size: 5)
         self.question.containerFrame = CGRect(origin: CGPoint(x: CGFloat(sphereNode.position.x), y: CGFloat(sphereNode.position.y)), size: CGSize(width: sphere.radius * 200, height: 100.0))
         self.question.isWrapped = true
         self.question.alignmentMode = kCAAlignmentCenter

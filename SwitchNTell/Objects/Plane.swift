@@ -69,10 +69,10 @@ class Plane: SCNNode {
         if(cord1 == nil && cord2 == nil && cord3 == nil && cord4 == nil) {
             cord1 = SphereNode(sphere: sphere, position: cordPosition)
             //make three options around it
-            tempCord1 = SphereNode(sphere: tempSphere, position: SCNVector3(cordPosition.x + halfLength, cordPosition.y, cordPosition.z))
-            tempCord2 = SphereNode(sphere: tempSphere, position: SCNVector3(cordPosition.x, cordPosition.y, cordPosition.z + halfLength))
-            tempCord3 = SphereNode(sphere: tempSphere, position: SCNVector3(cordPosition.x - halfLength, cordPosition.y, cordPosition.z))
-            tempCord4 = SphereNode(sphere: tempSphere, position: SCNVector3(cordPosition.x, cordPosition.y, cordPosition.z - halfLength))
+            tempCord1 = SphereNode(sphere: tempSphere, position: SCNVector3(cordPosition.x + halfLength, cordPosition.y + 0.05, cordPosition.z))
+            tempCord2 = SphereNode(sphere: tempSphere, position: SCNVector3(cordPosition.x, cordPosition.y + 0.05, cordPosition.z + halfLength))
+            tempCord3 = SphereNode(sphere: tempSphere, position: SCNVector3(cordPosition.x - halfLength, cordPosition.y + 0.05, cordPosition.z))
+            tempCord4 = SphereNode(sphere: tempSphere, position: SCNVector3(cordPosition.x, cordPosition.y + 0.05, cordPosition.z - halfLength))
 
             if let c1 = cord1, let tc1 = tempCord1, let tc2 = tempCord2, let tc3 = tempCord3, let tc4 = tempCord4 {
                 rootNode.addChildNode(c1)
@@ -109,12 +109,12 @@ class Plane: SCNNode {
                 
                 //make three options around it
                 if(cord1?.position.z == cord2?.position.z) {
-                    tempCord1 = SphereNode(sphere: tempSphere, position: SCNVector3(cordPosition.x, cordPosition.y, cordPosition.z + halfLength))
-                    tempCord2 = SphereNode(sphere: tempSphere, position: SCNVector3(cordPosition.x, cordPosition.y, cordPosition.z - halfLength))
+                    tempCord1 = SphereNode(sphere: tempSphere, position: SCNVector3(cordPosition.x, cordPosition.y + 0.05, cordPosition.z + halfLength))
+                    tempCord2 = SphereNode(sphere: tempSphere, position: SCNVector3(cordPosition.x, cordPosition.y + 0.05, cordPosition.z - halfLength))
                 }
                 else if(cord1?.position.x == cord2?.position.x)  {
-                    tempCord1 = SphereNode(sphere: tempSphere, position: SCNVector3(cordPosition.x + halfLength, cordPosition.y, cordPosition.z))
-                    tempCord2 = SphereNode(sphere: tempSphere, position: SCNVector3(cordPosition.x - halfLength, cordPosition.y, cordPosition.z))
+                    tempCord1 = SphereNode(sphere: tempSphere, position: SCNVector3(cordPosition.x + halfLength, cordPosition.y + 0.05, cordPosition.z))
+                    tempCord2 = SphereNode(sphere: tempSphere, position: SCNVector3(cordPosition.x - halfLength, cordPosition.y + 0.05, cordPosition.z))
                 }
                 
                 if let tc1 = tempCord1, let tc2 = tempCord2 {
