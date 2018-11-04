@@ -33,8 +33,6 @@ class BoardViewController: UIViewController, ARSCNViewDelegate {
         for space in gameSpaces {
             scene.rootNode.addChildNode(space)
         };
-
-//        scene.rootNode.addChildNode(gameSpace)
         
         // Set the scene to the view
         sceneView.scene = scene
@@ -116,5 +114,28 @@ class BoardViewController: UIViewController, ARSCNViewDelegate {
     func sessionInterruptionEnded(_ session: ARSession) {
         // Reset tracking and/or remove existing anchors if consistent tracking is required
 
+    }
+}
+
+extension UIColor {
+    
+    class var customBlue: UIColor {
+        return UIColor(red:0.37, green:0.49, blue:0.89, alpha:1.0)
+    }
+    
+    class var customTeal: UIColor {
+        return UIColor(red:0.31, green:0.77, blue:0.72, alpha:1.0)
+    }
+    
+    class var customPurple: UIColor {
+        return UIColor(red:0.33, green:0.23, blue:0.44, alpha:1.0)
+    }
+    
+    class var customGreen: UIColor {
+        return UIColor(red:0.61, green:0.93, blue:0.36, alpha:1.0)
+    }
+    
+    class var customYellow: UIColor {
+        return UIColor(red:0.94, green:0.96, blue:0.40, alpha:1.0)
     }
 }
