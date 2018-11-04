@@ -1,31 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="o2J-cA-ork">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tXr-a1-R10">
-            <objects>
-                <viewController id="BV1-FR-VrT" customClass="ViewController" customModule="SwitchNTell" customModuleProvider="target" sceneMemberID="viewController">
-                    <arscnView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="BrB-h1-WRS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    </arscnView>
-                    <connections>
-                        <segue destination="OXQ-M4-Szw" kind="show" identifier="startOnboarding" id="YPn-yU-0ca"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="670" y="37"/>
-        </scene>
         <!--Onboarding View Controller-->
         <scene sceneID="Xqc-U9-7au">
             <objects>
@@ -161,13 +145,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How many people are playing?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qGn-2U-yin">
-                                <rect key="frame" x="48" y="144" width="280.33333333333331" height="27.333333333333343"/>
+                                <rect key="frame" x="47.333333333333343" y="144" width="280.33333333333326" height="27.333333333333343"/>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DAd-9L-K5G">
-                                <rect key="frame" x="160.66666666666666" y="191.33333333333334" width="55" height="30"/>
+                                <rect key="frame" x="160" y="191.33333333333334" width="55" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="55" id="x98-Jm-rV8"/>
                                 </constraints>
@@ -227,44 +211,52 @@
             </objects>
             <point key="canvasLocation" x="3882" y="37"/>
         </scene>
-        <!--Board Setup View Controller-->
-        <scene sceneID="Ht5-Uj-9hy">
+        <!--View Controller-->
+        <scene sceneID="s3q-TS-GU2">
             <objects>
-                <viewController id="LrK-d8-IbV" customClass="BoardSetupViewController" customModule="SwitchNTell" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="AIL-eW-kXx">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="DTn-E8-SFT"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gvG-hg-9un" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-        </scene>
-        <!--Board Setup View Controller-->
-        <scene sceneID="Nc1-gB-Kgh">
-            <objects>
-                <viewController id="N4S-gv-R2l" customClass="BoardSetupViewController" customModule="SwitchNTell" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="7Ca-Ko-aqG">
+                <viewController storyboardIdentifier="SplashScreen" id="o2J-cA-ork" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KlY-NQ-wVJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UQ8-U3-PMl">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="438"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </arscnView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="RUl-cG-EhG">
+                                <rect key="frame" x="0.0" y="-1070" width="375" height="2952"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K9V-dI-8sr">
+                                <rect key="frame" x="-19625" y="-9594" width="20000" height="20000"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20000" id="qqH-Za-ZLD"/>
+                                    <constraint firstAttribute="width" constant="20000" id="zVI-mr-Qv5"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="OXQ-M4-Szw" kind="show" id="5Y4-pu-9EY"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="YWf-gi-B4d"/>
+                        <color key="backgroundColor" red="0.31764705879999999" green="0.50196078430000002" blue="0.75686274509999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="RUl-cG-EhG" firstAttribute="centerX" secondItem="KlY-NQ-wVJ" secondAttribute="centerX" id="CFg-gw-EpP"/>
+                            <constraint firstItem="K9V-dI-8sr" firstAttribute="trailing" secondItem="RUl-cG-EhG" secondAttribute="trailing" id="Cu9-d3-fTT"/>
+                            <constraint firstAttribute="trailing" secondItem="RUl-cG-EhG" secondAttribute="trailing" id="JeA-mz-ftl"/>
+                            <constraint firstItem="K9V-dI-8sr" firstAttribute="centerY" secondItem="RUl-cG-EhG" secondAttribute="centerY" id="YRD-PW-q5e"/>
+                            <constraint firstItem="RUl-cG-EhG" firstAttribute="centerY" secondItem="KlY-NQ-wVJ" secondAttribute="centerY" id="kIa-SK-93R"/>
+                            <constraint firstItem="RUl-cG-EhG" firstAttribute="leading" secondItem="KlY-NQ-wVJ" secondAttribute="leading" id="rmu-Vc-m71"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6D5-fG-YCC"/>
                     </view>
+                    <connections>
+                        <outlet property="view" destination="RUl-cG-EhG" id="C7U-G6-jOe"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wkK-KI-JGZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ulh-p6-fjA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="544.79999999999995" y="36.945812807881772"/>
         </scene>
     </scenes>
     <resources>
         <image name="noun_Fire_1742362" width="697" height="589"/>
         <image name="noun_Heart_1595169" width="690" height="588"/>
         <image name="noun_group_195974" width="698" height="585"/>
+        <image name="splash-logo.png" width="2820" height="2952"/>
     </resources>
 </document>

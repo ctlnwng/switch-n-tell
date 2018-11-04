@@ -7,11 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3101839E218DF2DC00BD4CE0 /* BoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3101839D218DF2DC00BD4CE0 /* BoardViewController.swift */; };
-		98CC352C218DF3F10064F276 /* STOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CC352B218DF3F10064F276 /* STOnboardingViewController.swift */; };
-		7DAFC9C7218ED0C800D5E220 /* splash-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DAFC9C6218ED0C800D5E220 /* splash-logo.png */; };
 		310183A0218E215100BD4CE0 /* GameSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3101839F218E215100BD4CE0 /* GameSpace.swift */; };
 		310183A2218E840800BD4CE0 /* QuestionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310183A1218E840800BD4CE0 /* QuestionManager.swift */; };
+		7DAFC9C7218ED0C800D5E220 /* splash-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DAFC9C6218ED0C800D5E220 /* splash-logo.png */; };
 		7DC4EADC218E135E00BB2F75 /* Plane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC4EADB218E135E00BB2F75 /* Plane.swift */; };
 		7DC4EADE218E18C400BB2F75 /* BoardSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC4EADD218E18C400BB2F75 /* BoardSetupViewController.swift */; };
 		7DC4EAE2218E231300BB2F75 /* plane_grid.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DC4EAE1218E231300BB2F75 /* plane_grid.png */; };
@@ -28,11 +26,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3101839D218DF2DC00BD4CE0 /* BoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewController.swift; sourceTree = "<group>"; };
-		98CC352B218DF3F10064F276 /* STOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STOnboardingViewController.swift; sourceTree = "<group>"; };
-		7DAFC9C6218ED0C800D5E220 /* splash-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splash-logo.png"; sourceTree = "<group>"; };
 		3101839F218E215100BD4CE0 /* GameSpace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSpace.swift; sourceTree = "<group>"; };
 		310183A1218E840800BD4CE0 /* QuestionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionManager.swift; sourceTree = "<group>"; };
+		7DAFC9C6218ED0C800D5E220 /* splash-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splash-logo.png"; sourceTree = "<group>"; };
 		7DC4EADB218E135E00BB2F75 /* Plane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plane.swift; sourceTree = "<group>"; };
 		7DC4EADD218E18C400BB2F75 /* BoardSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardSetupViewController.swift; sourceTree = "<group>"; };
 		7DC4EAE1218E231300BB2F75 /* plane_grid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plane_grid.png; sourceTree = "<group>"; };
@@ -345,13 +341,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = R6BKCMLX4N;
+				DEVELOPMENT_TEAM = 358QD9LM95;
 				INFOPLIST_FILE = SwitchNTell/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = i.SwitchNTell22;
+				PRODUCT_BUNDLE_IDENTIFIER = i.SwitchNTell;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -363,13 +359,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = R6BKCMLX4N;
+				DEVELOPMENT_TEAM = 358QD9LM95;
 				INFOPLIST_FILE = SwitchNTell/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = i.SwitchNTell22;
+				PRODUCT_BUNDLE_IDENTIFIER = i.SwitchNTell;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
