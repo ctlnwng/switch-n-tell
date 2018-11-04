@@ -19,6 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "STOnboarding")
         let navC = UINavigationController.init(rootViewController: vc)
+        UINavigationBar.appearance().tintColor = UIColor.init(red: 236/255, green: 191/255, blue: 0, alpha: 1)
+        UINavigationBar.appearance().
         //self.present(navC, animated: true, completion: nil)
         self.window?.rootViewController = navC
         return true
