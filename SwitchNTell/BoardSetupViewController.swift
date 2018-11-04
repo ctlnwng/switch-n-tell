@@ -82,7 +82,7 @@ class BoardSetupViewController: UIViewController, ARSCNViewDelegate {
             view.text = STStringConstants.getSetupBoardInstructions()
             view.numberOfLines = 0
             view.textAlignment = NSTextAlignment.center
-            view.backgroundColor = UIColor.gray
+            view.backgroundColor = UIColor.transparentBlack
             view.textColor = UIColor.white
             view.clipsToBounds = true
             view.font = UIFont.init(name: "Avenir", size: 17)
@@ -98,7 +98,7 @@ class BoardSetupViewController: UIViewController, ARSCNViewDelegate {
         saveButton?.frame = CGRect.init(x: self.view.frame.midX + 10, y: self.view.frame.maxY - 100, width: 60, height: 50)
         saveButton?.setTitle("Next", for: .normal)
         saveButton?.setTitleColor(UIColor.white, for: .normal)
-        saveButton?.backgroundColor = UIColor.red
+        saveButton?.backgroundColor = UIColor.customRed
         saveButton?.clipsToBounds = true
         saveButton?.titleLabel?.font = UIFont.init(name: "Avenir", size: 17)
         saveButton?.layer.cornerRadius = 10.0
@@ -118,7 +118,7 @@ class BoardSetupViewController: UIViewController, ARSCNViewDelegate {
         shuffleButton?.frame = CGRect.init(x: self.view.frame.midX + 10, y: self.view.frame.maxY - 100, width: 60, height: 50)
         shuffleButton?.setTitle("Shuffle", for: .normal)
         shuffleButton?.setTitleColor(UIColor.white, for: .normal)
-        shuffleButton?.backgroundColor = UIColor.red
+        shuffleButton?.backgroundColor = UIColor.customRed
         shuffleButton?.titleLabel?.font = UIFont.init(name: "Avenir", size: 17)
         shuffleButton?.clipsToBounds = true
         shuffleButton?.layer.cornerRadius = 10.0
@@ -141,7 +141,7 @@ class BoardSetupViewController: UIViewController, ARSCNViewDelegate {
         cancelButton.layer.cornerRadius = 10.0
         cancelButton.titleLabel?.font = UIFont.init(name: "Avenir", size: 17)
         cancelButton.setTitleColor(UIColor.white, for: .normal)
-        cancelButton.backgroundColor = UIColor.gray
+        cancelButton.backgroundColor = UIColor.transparentBlack
         cancelButton.addTarget(self, action: #selector(onCancelPressed), for: UIControlEvents.touchDown)
         
         self.view.addSubview(cancelButton)
@@ -352,5 +352,9 @@ extension UIColor {
     
     class var customYellow: UIColor {
         return UIColor(red:0.94, green:0.96, blue:0.40, alpha:1.0)
+    }
+    
+    class var transparentBlack: UIColor {
+        return UIColor(red:0.00, green:0.00, blue:0.00, alpha:0.7)
     }
 }
