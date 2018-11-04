@@ -274,6 +274,16 @@ class BoardSetupViewController: UIViewController, ARSCNViewDelegate {
         for space in gameSpaces {
             sceneView.scene.rootNode.addChildNode(space)
         };
+        
+        guard let rugScene = SCNScene(named: "art.scnassets/ANDO3516_v6_LOD2.scn"),
+            let rugNode = rugScene.rootNode.childNode(withName: "rug", recursively: false)
+            else {
+                return
+        }
+        rugNode.scale = SCNVector3(0.01, 0.01, 0.01)
+        rugNode.position = (plane?.cord1?.position.midpoint(to: (plane?.cord3?.position)!))!
+
+        sceneView.scene.rootNode.addChildNode(rugNode)
     }
     
     func createGameSpaces(numPlayers: Int) -> [GameSpace] {
