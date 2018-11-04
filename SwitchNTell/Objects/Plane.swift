@@ -15,7 +15,9 @@ import ARKit
 class Plane: SCNNode {
     var anchor: ARPlaneAnchor
     
-    var nodeColor = UIColor.orange;
+    var nodeColor = UIColor.green;
+    var tempNodeColor = UIColor.orange;
+
     var nodeRadius = CGFloat.init(0.1);
     
     var planeGeometry: SCNPlane
@@ -59,15 +61,17 @@ class Plane: SCNNode {
     
     func addCord(cordPosition: SCNVector3, rootNode: SCNNode) {
         let sphere = SCNSphere(color: self.nodeColor, radius: CGFloat(self.nodeRadius))
+        let tempSphere = SCNSphere(color: self.tempNodeColor, radius: CGFloat(self.nodeRadius))
+
         
         //if Node 1, place wherever
         if(cord1 == nil && cord2 == nil && cord3 == nil && cord4 == nil) {
             cord1 = SphereNode(sphere: sphere, position: cordPosition)
             //make three options around it
-            tempCord1 = SphereNode(sphere: sphere, position: SCNVector3(cordPosition.x + 1, cordPosition.y, cordPosition.z))
-            tempCord2 = SphereNode(sphere: sphere, position: SCNVector3(cordPosition.x, cordPosition.y, cordPosition.z + 1))
-            tempCord3 = SphereNode(sphere: sphere, position: SCNVector3(cordPosition.x - 1, cordPosition.y, cordPosition.z))
-            tempCord4 = SphereNode(sphere: sphere, position: SCNVector3(cordPosition.x, cordPosition.y, cordPosition.z - 1))
+            tempCord1 = SphereNode(sphere: tempSphere, position: SCNVector3(cordPosition.x + 1, cordPosition.y, cordPosition.z))
+            tempCord2 = SphereNode(sphere: tempSphere, position: SCNVector3(cordPosition.x, cordPosition.y, cordPosition.z + 1))
+            tempCord3 = SphereNode(sphere: tempSphere, position: SCNVector3(cordPosition.x - 1, cordPosition.y, cordPosition.z))
+            tempCord4 = SphereNode(sphere: tempSphere, position: SCNVector3(cordPosition.x, cordPosition.y, cordPosition.z - 1))
 
             if let c1 = cord1, let tc1 = tempCord1, let tc2 = tempCord2, let tc3 = tempCord3, let tc4 = tempCord4 {
                 rootNode.addChildNode(c1)
@@ -81,6 +85,31 @@ class Plane: SCNNode {
         //TODO TODO add to cord object depending on...
     }
     
+    func interactNode(sphereNode: SphereNode?, rootNode: SCNNode){
+        let sphere = SCNSphere(color: self.nodeColor, radius: CGFloat(self.nodeRadius)) //TODO: repeat
+
+        if(sphereNode == tempCord1), let c = tempCord1 {
+            cord2 = SphereNode(sphere: sphere, position: c.position)
+            tempCord1?.removeFromParentNode();
+        }
+        if(sphereNode == tempCord2), let c = tempCord2 {
+            cord2 = SphereNode(sphere: sphere, position: c.position)
+            tempCord2?.removeFromParentNode();
+        }
+        if(sphereNode == tempCord3), let c = tempCord3 {
+            cord2 = SphereNode(sphere: sphere, position: c.position)
+            tempCord3?.removeFromParentNode();
+        }
+        if(sphereNode == tempCord4), let c = tempCord4 {
+            cord2 = SphereNode(sphere: sphere, position: c.position)
+            tempCord4?.removeFromParentNode();
+        }
+        if let c2 = cord2 {
+            rootNode.addChildNode(c2)
+        }
+    }
+
+    
     //remove all children
     override func removeFromParentNode() {
         super.removeFromParentNode()
@@ -88,6 +117,10 @@ class Plane: SCNNode {
         cord2?.removeFromParentNode()
         cord3?.removeFromParentNode()
         cord4?.removeFromParentNode()
+        tempCord1?.removeFromParentNode()
+        tempCord2?.removeFromParentNode()
+        tempCord3?.removeFromParentNode()
+        tempCord4?.removeFromParentNode()
     }
 }
 

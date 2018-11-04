@@ -92,21 +92,29 @@ class BoardSetupViewController: UIViewController, ARSCNViewDelegate {
     // MARK: Gesture handlers
     @objc func handleTap(sender: UITapGestureRecognizer) {
         
-        let tapLocation = sceneView.center// Get the center point, of the SceneView.
+//        let tapLocation = sceneView.center// Get the center point, of the SceneView.
+        let tapLocation = sender.location(in: sceneView)
         let hitTestResults = sceneView.hitTest(tapLocation, types: .existingPlaneUsingExtent)
         
-        guard let hitTestResult = hitTestResults.first else { return }
+        if let hitTestResult = hitTestResults.first{
+            //only place on the current board
+            if(hitTestResult.anchor == plane?.anchor) {
+                let translation = hitTestResult.worldTransform.translation
+                let x = translation.x
+                let y = translation.y
+                let z = translation.z
+                
+                //TODO: yuck, should just do a relative location but tired
+                plane?.addCord(cordPosition: SCNVector3(x,y,z), rootNode: sceneView.scene.rootNode)
+            }
+        }
+        
+        let hitTestResults2 = sceneView.hitTest(tapLocation)
+        
+        guard let hitTestResult2 = hitTestResults2.first else { return }
         
         //only place on the current board
-        if(hitTestResult.anchor == plane?.anchor) {
-            let translation = hitTestResult.worldTransform.translation
-            let x = translation.x
-            let y = translation.y
-            let z = translation.z
-            
-            //TODO: yuck, should just do a relative location but tired
-            plane?.addCord(cordPosition: SCNVector3(x,y,z), rootNode: sceneView.scene.rootNode)
-        }
+        plane?.interactNode(sphereNode: hitTestResult2.node as? SphereNode, rootNode: sceneView.scene.rootNode)
     }
     
     // Helper Methods - - - - - -
