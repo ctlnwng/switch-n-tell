@@ -13,9 +13,12 @@ import ARKit
 class BoardViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
+    var boardWidth:Float = 5.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let numPlayers:Int? = Int(STSettings.instance().numPlayers)
 
         // Set the view's delegate
         sceneView.delegate = self
@@ -24,9 +27,14 @@ class BoardViewController: UIViewController, ARSCNViewDelegate {
         sceneView.showsStatistics = true
 
         let scene = SCNScene()
-        let gameSpace = GameSpace()
+        
+        let gameSpaces:[GameSpace] = createGameSpaces(numPlayers: numPlayers!)
+        
+        for space in gameSpaces {
+            scene.rootNode.addChildNode(space)
+        };
 
-        scene.rootNode.addChildNode(gameSpace)
+//        scene.rootNode.addChildNode(gameSpace)
         
         // Set the scene to the view
         sceneView.scene = scene
@@ -55,13 +63,41 @@ class BoardViewController: UIViewController, ARSCNViewDelegate {
         sceneView.session.run(configuration)
     }
 
-    func createBoard(plane: SCNPlane, numPlayers: Int) {
+    func createGameSpaces(numPlayers: Int) -> [GameSpace] {
+        var gameSpaces: [GameSpace] = []
         
-
+        let degApart:CGFloat = 360 / CGFloat(numPlayers)
+        
+        for n in 0...(numPlayers - 1) {
+            let angle = CGFloat(n) * degApart
+            let radius = CGFloat(boardWidth / 2.0)
+            let xyCoord = polarToCartesian(angle: angle, radius: radius)
+            
+            let gameSpace:GameSpace = GameSpace(x: xyCoord.x, y: 0, z: xyCoord.y)
+            
+            gameSpaces.append(gameSpace)
+            
+            print(angle)
+            print(radius)
+            print(xyCoord.x)
+            print(xyCoord.y)
+        }
+        
+        return gameSpaces
+    }
+    
+    func polarToCartesian(angle: CGFloat, radius: CGFloat) -> CGPoint {
+        let x: CGFloat = radius * cos(degToRad(angle: angle))
+        let z: CGFloat = radius * sin(degToRad(angle: angle))
+        return CGPoint(x: x, y: z)
+    }
+    
+    func degToRad(angle: CGFloat) -> CGFloat {
+        return angle * .pi / 180
     }
 
     // MARK: - ARSCNViewDelegate
-
+ 
     /*
      // Override to create and configure nodes for anchors added to the view's session.
      func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {

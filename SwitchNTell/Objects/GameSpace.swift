@@ -18,7 +18,7 @@ class GameSpace: SCNNode {
     var question: SCNText
     var questionNode: SCNNode
     
-    override init() {
+    init(x: CGFloat, y: CGFloat, z: CGFloat) {
         let material = SCNMaterial()
         material.diffuse.contents = UIColor.green
         
@@ -27,7 +27,7 @@ class GameSpace: SCNNode {
         self.sphere.materials = [material]
         
         self.sphereNode = SCNNode(geometry: sphere)
-        self.sphereNode.position = SCNVector3(x: 0, y: 0, z: -0.5)
+        self.sphereNode.position = SCNVector3(x: Float(x), y: Float(y), z: Float(z))
         
         // Question
         self.question = SCNText(string: "What is your most traumatic memory?", extrusionDepth: 0.0)
