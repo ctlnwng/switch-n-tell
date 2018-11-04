@@ -57,12 +57,25 @@ class Plane: SCNNode {
     
     func addCord(cordPosition: SCNVector3, rootNode: SCNNode) {
         let sphere = SCNSphere(color: self.nodeColor, radius: CGFloat(self.nodeRadius))
-        let sphereNode = SphereNode(sphere: sphere, position: cordPosition)
         
         //if Node 1, place wherever
+        if(cord1 == nil && cord2 == nil && cord3 == nil && cord4 == nil) {
+            cord1 = SphereNode(sphere: sphere, position: cordPosition)
+            if let c = cord1 {
+                rootNode.addChildNode(c)
+            }
+        }
         
-        rootNode.addChildNode(sphereNode)
         //TODO TODO add to cord object depending on...
+    }
+    
+    //remove all children
+    override func removeFromParentNode() {
+        super.removeFromParentNode()
+        cord1?.removeFromParentNode()
+        cord2?.removeFromParentNode()
+        cord3?.removeFromParentNode()
+        cord4?.removeFromParentNode()
     }
 }
 
