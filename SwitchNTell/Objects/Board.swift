@@ -87,6 +87,13 @@ extension SCNVector3 {
         let dz = destination.z - z
         return CGFloat(sqrt(dx*dx + dy*dy + dz*dz))
     }
+    
+    func midpoint(to destination: SCNVector3) -> SCNVector3 {
+        let dx = destination.x + x
+        let dy = destination.y + y
+        let dz = destination.z + z
+        return SCNVector3(x: dx/2, y: dy/2, z: dz/2)
+    }
 
     static func positionFrom(matrix: matrix_float4x4) -> SCNVector3 {
         let column = matrix.columns.3

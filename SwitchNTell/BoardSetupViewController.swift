@@ -26,10 +26,18 @@ class BoardSetupViewController: UIViewController, ARSCNViewDelegate {
     //Board to place on
     var board : Board?
     var plane : Plane?
-
+    
+    var saveButton: UIButton?
+    var shuffleButton: UIButton?
+    
+    var boardWidth:CGFloat = 4.0
+    
+    var inGameState: Bool?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        inGameState = false
         
         //Create TapGesture Recognizer
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:)))
@@ -59,32 +67,76 @@ class BoardSetupViewController: UIViewController, ARSCNViewDelegate {
         // Run the view's session
         sceneView.session.run(configuration)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
+        
         self.addSetupInstructions()
-        self.saveButton()
+        self.goForwardButton()
+        self.endGameButton()
         self.cancelButton()
-    
     }
     
-    private func saveButton()
+    private func addSetupInstructions() {
+        let topMargin: CGFloat = 35
+        let instructionsHeight: CGFloat = 100
+        self.instructionsLabel = UILabel.init()
+        if let view = self.instructionsLabel {
+            view.text = STStringConstants.getSetupBoardInstructions()
+            view.numberOfLines = 0
+            view.textAlignment = NSTextAlignment.center
+            view.backgroundColor = UIColor.gray
+            view.textColor = UIColor.white
+            view.clipsToBounds = true
+            view.font = UIFont.init(name: "Avenir", size: 17)
+            view.layer.cornerRadius = 10.0
+            view.frame = CGRect.init(x: self.view.frame.minX, y: topMargin, width: self.view.frame.width, height: instructionsHeight)
+            self.view.addSubview(view)
+        }
+    }
+    
+    private func goForwardButton()
     {
-        let shuffleButton = UIButton.init(type: UIButtonType.custom)
-        shuffleButton.frame = CGRect.init(x: self.view.frame.midX + 10, y: self.view.frame.maxY - 100, width: 60, height: 50)
-        shuffleButton.setTitle("Next", for: .normal)
-        shuffleButton.setTitleColor(UIColor.white, for: .normal)
-        shuffleButton.backgroundColor = UIColor.red
-        shuffleButton.clipsToBounds = true
-        shuffleButton.titleLabel?.font = UIFont.init(name: "Avenir", size: 17)
-        shuffleButton.layer.cornerRadius = 10.0
-        shuffleButton.addTarget(self, action: #selector(goForward), for: UIControlEvents.touchDown)
+        saveButton = UIButton.init(type: UIButtonType.custom)
+        saveButton?.frame = CGRect.init(x: self.view.frame.midX + 10, y: self.view.frame.maxY - 100, width: 60, height: 50)
+        saveButton?.setTitle("Next", for: .normal)
+        saveButton?.setTitleColor(UIColor.white, for: .normal)
+        saveButton?.backgroundColor = UIColor.red
+        saveButton?.clipsToBounds = true
+        saveButton?.titleLabel?.font = UIFont.init(name: "Avenir", size: 17)
+        saveButton?.layer.cornerRadius = 10.0
+        saveButton?.addTarget(self, action: #selector(goForward), for: UIControlEvents.touchDown)
         
-        self.view.addSubview(shuffleButton)
+        if let subView = self.saveButton
+        {
+            self.view.addSubview(subView)
+        }
+        
+        saveButton?.isHidden = true
+    }
+    
+    private func endGameButton()
+    {
+        shuffleButton = UIButton.init(type: UIButtonType.custom)
+        shuffleButton?.frame = CGRect.init(x: self.view.frame.midX + 10, y: self.view.frame.maxY - 100, width: 60, height: 50)
+        shuffleButton?.setTitle("Shuffle", for: .normal)
+        shuffleButton?.setTitleColor(UIColor.white, for: .normal)
+        shuffleButton?.backgroundColor = UIColor.red
+        shuffleButton?.titleLabel?.font = UIFont.init(name: "Avenir", size: 17)
+        shuffleButton?.clipsToBounds = true
+        shuffleButton?.layer.cornerRadius = 10.0
+        shuffleButton?.addTarget(self, action: #selector(shuffle), for: UIControlEvents.touchDown)
+        
+        if let subView = self.shuffleButton
+        {
+            self.view.addSubview(subView)
+        }
+        
+        shuffleButton?.isHidden = true
     }
     
     private func cancelButton()
     {
         let cancelButton = UIButton.init(type: UIButtonType.custom)
         cancelButton.frame = CGRect.init(x: self.view.frame.midX - 60, y: self.view.frame.maxY - 100, width: 60, height: 50)
-        cancelButton.setTitle("Cancel", for: .normal)
+        cancelButton.setTitle("Back", for: .normal)
         cancelButton.clipsToBounds = true
         cancelButton.layer.cornerRadius = 10.0
         cancelButton.titleLabel?.font = UIFont.init(name: "Avenir", size: 17)
@@ -96,33 +148,27 @@ class BoardSetupViewController: UIViewController, ARSCNViewDelegate {
     }
     
     @objc func goForward() {
-        self.performSegue(withIdentifier: "goToBoard", sender: nil)
+        addGameSpaces()
+        saveButton?.isHidden = true
+        shuffleButton?.isHidden = false
+        
+        self.instructionsLabel?.text = STStringConstants.getGamePlayInstructions()
     }
     
+    @objc private func shuffle() {
+        if let n = Int(STSettings.instance().numPlayers) {
+            let num = arc4random_uniform(UInt32(n)) + 1
+            if let view = self.instructionsLabel
+            {
+                view.text = "Player " + String(num) + " must answer their question 😱."
+            }
+        }
+    }
     
     @objc func onCancelPressed() {
         self.navigationController?.popViewController(animated: true)
     }
-    
-    private func addSetupInstructions() {
-        let topMargin: CGFloat = 35
-        let instructionsHeight: CGFloat = 60
-        self.instructionsLabel = UILabel.init()
-        if let view = self.instructionsLabel {
-        view.text = STStringConstants.getSetupBoardInstructions()
-        view.numberOfLines = 0
-        view.textAlignment = NSTextAlignment.center
-        view.backgroundColor = UIColor.gray
-        view.textColor = UIColor.white
-        view.clipsToBounds = true
-        view.font = UIFont.init(name: "Avenir", size: 17)
-        view.layer.cornerRadius = 10.0
-        view.frame = CGRect.init(x: self.view.frame.minX, y: topMargin, width: self.view.frame.width, height: instructionsHeight)
-        self.view.addSubview(view)
-        }
-    }
 
-    
     // PRAGMA MARK for noah
     func setSetupInstructions(instructions: String) {
        self.instructionsLabel?.text = instructions
@@ -174,7 +220,7 @@ class BoardSetupViewController: UIViewController, ARSCNViewDelegate {
                 let z = translation.z
                 
                 //TODO: yuck, should just do a relative location but tired
-                plane?.addCord(cordPosition: SCNVector3(x,y,z), rootNode: sceneView.scene.rootNode)
+                plane?.addCord(cordPosition: SCNVector3(x,y,z), rootNode: sceneView.scene.rootNode, numPlayers: Int(STSettings.instance().numPlayers)!)
             }
         }
         
@@ -183,7 +229,12 @@ class BoardSetupViewController: UIViewController, ARSCNViewDelegate {
         guard let hitTestResult2 = hitTestResults2.first else { return }
         
         //only place on the current board
-        plane?.interactNode(sphereNode: hitTestResult2.node as? SphereNode, rootNode: sceneView.scene.rootNode)
+        let doneWithSetup = plane?.interactNode(sphereNode: hitTestResult2.node as? SphereNode, rootNode: sceneView.scene.rootNode, numPlayers: Int(STSettings.instance().numPlayers)!)
+        
+        if(doneWithSetup != nil) {
+            saveButton?.isHidden = false
+            inGameState = true
+        }
     }
     
     // Helper Methods - - - - - -
@@ -215,11 +266,77 @@ class BoardSetupViewController: UIViewController, ARSCNViewDelegate {
         //extend the current plane
         plane?.update(anchor)
     }
+    
+    func addGameSpaces() {
+        let numPlayers:Int? = Int(STSettings.instance().numPlayers)
+        let gameSpaces:[GameSpace] = createGameSpaces(numPlayers: numPlayers!)
+        
+        for space in gameSpaces {
+            sceneView.scene.rootNode.addChildNode(space)
+        };
+    }
+    
+    func createGameSpaces(numPlayers: Int) -> [GameSpace] {
+        var gameSpaces: [GameSpace] = []
+        
+        boardWidth = (plane?.cord1?.position.distance(to: (plane?.cord2?.position)!))!
+        
+        let degApart: CGFloat = 360 / CGFloat(numPlayers)
+        let center: SCNVector3 = (plane?.cord1?.position.midpoint(to: (plane?.cord3?.position)!))!
+        let radius = CGFloat(boardWidth / 2.0)
+        let questions = QuestionManager.getNRandomQuestions(n: numPlayers)
+        
+        for n in 0...(numPlayers - 1) {
+            let angle = CGFloat(n) * degApart
+            let xyCoord = polarToCartesian(angle: angle, radius: radius, center: center)
+            
+            let gameSpace:GameSpace = GameSpace(x: xyCoord.x, y: CGFloat(center.y), z: xyCoord.y, questionString: questions[n], idx: String(n + 1))
+            
+            gameSpaces.append(gameSpace)
+        }
+        
+        return gameSpaces
+    }
+    
+    func polarToCartesian(angle: CGFloat, radius: CGFloat, center: SCNVector3) -> CGPoint {
+        let x: CGFloat = (radius * cos(degToRad(angle: angle))) + CGFloat(center.x)
+        let z: CGFloat = radius * sin(degToRad(angle: angle)) + CGFloat(center.z)
+        return CGPoint(x: x, y: z)
+    }
+    
+    func degToRad(angle: CGFloat) -> CGFloat {
+        return angle * .pi / 180
+    }
+    
+    
 }
 
 extension float4x4 {
     var translation: float3 {
         let translation = self.columns.3
         return float3(translation.x, translation.y, translation.z)
+    }
+}
+
+extension UIColor {
+    
+    class var customBlue: UIColor {
+        return UIColor(red:0.37, green:0.49, blue:0.89, alpha:1.0)
+    }
+    
+    class var customTeal: UIColor {
+        return UIColor(red:0.31, green:0.77, blue:0.72, alpha:1.0)
+    }
+    
+    class var customPurple: UIColor {
+        return UIColor(red:0.33, green:0.23, blue:0.44, alpha:1.0)
+    }
+    
+    class var customGreen: UIColor {
+        return UIColor(red:0.61, green:0.93, blue:0.36, alpha:1.0)
+    }
+    
+    class var customYellow: UIColor {
+        return UIColor(red:0.94, green:0.96, blue:0.40, alpha:1.0)
     }
 }
