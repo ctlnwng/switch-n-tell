@@ -23,6 +23,11 @@ class STNumPlayersOnboardingViewController : UIViewController, UITextFieldDelega
         self.numPlayersTextField.becomeFirstResponder()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+
+    }
+    
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.numPlayers = numPlayersTextField.text

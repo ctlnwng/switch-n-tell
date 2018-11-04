@@ -74,9 +74,8 @@ class BoardSetupViewController: UIViewController, ARSCNViewDelegate {
         self.cancelButton()
     }
     
-    
     private func addSetupInstructions() {
-        let topMargin: CGFloat = 15
+        let topMargin: CGFloat = 35
         let instructionsHeight: CGFloat = 100
         self.instructionsLabel = UILabel.init()
         if let view = self.instructionsLabel {
@@ -85,19 +84,24 @@ class BoardSetupViewController: UIViewController, ARSCNViewDelegate {
             view.textAlignment = NSTextAlignment.center
             view.backgroundColor = UIColor.gray
             view.textColor = UIColor.white
+            view.clipsToBounds = true
+            view.font = UIFont.init(name: "Avenir", size: 17)
+            view.layer.cornerRadius = 10.0
             view.frame = CGRect.init(x: self.view.frame.minX, y: topMargin, width: self.view.frame.width, height: instructionsHeight)
             self.view.addSubview(view)
         }
     }
     
-    
     private func goForwardButton()
     {
         saveButton = UIButton.init(type: UIButtonType.custom)
-        saveButton?.frame = CGRect.init(x: self.view.frame.midX, y: self.view.frame.maxY - 40, width: 50, height: 100)
-        saveButton?.setTitle("Shuffle", for: .normal)
-        saveButton?.setTitleColor(UIColor.red, for: .normal)
-        saveButton?.backgroundColor = UIColor.gray
+        saveButton?.frame = CGRect.init(x: self.view.frame.midX + 10, y: self.view.frame.maxY - 100, width: 60, height: 50)
+        saveButton?.setTitle("Next", for: .normal)
+        saveButton?.setTitleColor(UIColor.white, for: .normal)
+        saveButton?.backgroundColor = UIColor.red
+        saveButton?.clipsToBounds = true
+        saveButton?.titleLabel?.font = UIFont.init(name: "Avenir", size: 17)
+        saveButton?.layer.cornerRadius = 10.0
         saveButton?.addTarget(self, action: #selector(goForward), for: UIControlEvents.touchDown)
         
         if let subView = self.saveButton
@@ -111,10 +115,13 @@ class BoardSetupViewController: UIViewController, ARSCNViewDelegate {
     private func endGameButton()
     {
         shuffleButton = UIButton.init(type: UIButtonType.custom)
-        shuffleButton?.frame = CGRect.init(x: self.view.frame.midX, y: self.view.frame.maxY - 40, width: 50, height: 100)
+        shuffleButton?.frame = CGRect.init(x: self.view.frame.midX + 10, y: self.view.frame.maxY - 100, width: 60, height: 50)
         shuffleButton?.setTitle("Shuffle", for: .normal)
-        shuffleButton?.setTitleColor(UIColor.red, for: .normal)
-        shuffleButton?.backgroundColor = UIColor.gray
+        shuffleButton?.setTitleColor(UIColor.white, for: .normal)
+        shuffleButton?.backgroundColor = UIColor.red
+        shuffleButton?.titleLabel?.font = UIFont.init(name: "Avenir", size: 17)
+        shuffleButton?.clipsToBounds = true
+        shuffleButton?.layer.cornerRadius = 10.0
         shuffleButton?.addTarget(self, action: #selector(shuffle), for: UIControlEvents.touchDown)
         
         if let subView = self.shuffleButton
@@ -128,10 +135,13 @@ class BoardSetupViewController: UIViewController, ARSCNViewDelegate {
     private func cancelButton()
     {
         let cancelButton = UIButton.init(type: UIButtonType.custom)
-        cancelButton.frame = CGRect.init(x: self.view.frame.midX - 50, y: self.view.frame.maxY - 40, width: 50, height: 100)
-        cancelButton.setTitle("Cancel", for: .normal)
-        cancelButton.setTitleColor(UIColor.red, for: .normal)
-        cancelButton.backgroundColor = UIColor.blue
+        cancelButton.frame = CGRect.init(x: self.view.frame.midX - 60, y: self.view.frame.maxY - 100, width: 60, height: 50)
+        cancelButton.setTitle("Back", for: .normal)
+        cancelButton.clipsToBounds = true
+        cancelButton.layer.cornerRadius = 10.0
+        cancelButton.titleLabel?.font = UIFont.init(name: "Avenir", size: 17)
+        cancelButton.setTitleColor(UIColor.white, for: .normal)
+        cancelButton.backgroundColor = UIColor.gray
         cancelButton.addTarget(self, action: #selector(onCancelPressed), for: UIControlEvents.touchDown)
         
         self.view.addSubview(cancelButton)
@@ -150,7 +160,7 @@ class BoardSetupViewController: UIViewController, ARSCNViewDelegate {
             let num = arc4random_uniform(UInt32(n)) + 1
             if let view = self.instructionsLabel
             {
-                view.text = "Player " + String(num)
+                view.text = "Player " + String(num) + " must answer their question 😱."
             }
         }
     }
@@ -158,7 +168,7 @@ class BoardSetupViewController: UIViewController, ARSCNViewDelegate {
     @objc func onCancelPressed() {
         self.navigationController?.popViewController(animated: true)
     }
-    
+
     // PRAGMA MARK for noah
     func setSetupInstructions(instructions: String) {
        self.instructionsLabel?.text = instructions
