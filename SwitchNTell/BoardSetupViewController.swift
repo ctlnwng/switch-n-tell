@@ -73,6 +73,7 @@ class BoardSetupViewController: UIViewController, ARSCNViewDelegate {
         shuffleButton.setTitleColor(UIColor.white, for: .normal)
         shuffleButton.backgroundColor = UIColor.red
         shuffleButton.clipsToBounds = true
+        shuffleButton.titleLabel?.font = UIFont.init(name: "Avenir", size: 17)
         shuffleButton.layer.cornerRadius = 10.0
         shuffleButton.addTarget(self, action: #selector(goForward), for: UIControlEvents.touchDown)
         
@@ -86,6 +87,7 @@ class BoardSetupViewController: UIViewController, ARSCNViewDelegate {
         cancelButton.setTitle("Cancel", for: .normal)
         cancelButton.clipsToBounds = true
         cancelButton.layer.cornerRadius = 10.0
+        cancelButton.titleLabel?.font = UIFont.init(name: "Avenir", size: 17)
         cancelButton.setTitleColor(UIColor.white, for: .normal)
         cancelButton.backgroundColor = UIColor.gray
         cancelButton.addTarget(self, action: #selector(onCancelPressed), for: UIControlEvents.touchDown)
@@ -112,6 +114,9 @@ class BoardSetupViewController: UIViewController, ARSCNViewDelegate {
         view.textAlignment = NSTextAlignment.center
         view.backgroundColor = UIColor.gray
         view.textColor = UIColor.white
+        view.clipsToBounds = true
+        view.font = UIFont.init(name: "Avenir", size: 17)
+        view.layer.cornerRadius = 10.0
         view.frame = CGRect.init(x: self.view.frame.minX, y: topMargin, width: self.view.frame.width, height: instructionsHeight)
         self.view.addSubview(view)
         }

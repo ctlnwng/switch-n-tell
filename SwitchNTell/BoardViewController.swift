@@ -47,8 +47,11 @@ class BoardViewController: UIViewController, ARSCNViewDelegate {
         if let view = self.instructionsView {
         view.text = STStringConstants.getGamePlayInstructions()
         view.numberOfLines = 0
+        view.clipsToBounds = true
+        view.layer.cornerRadius = 10.0
         view.textAlignment = NSTextAlignment.center
         view.backgroundColor = UIColor.gray
+        view.font = UIFont.init(name: "Avenir", size: 17)
         view.textColor = UIColor.white
         view.frame = CGRect.init(x: self.view.frame.minX, y: topMargin, width: self.view.frame.width, height: instructionsHeight)
         self.view.addSubview(view)
@@ -62,6 +65,7 @@ class BoardViewController: UIViewController, ARSCNViewDelegate {
         shuffleButton.setTitle("Shuffle", for: .normal)
         shuffleButton.setTitleColor(UIColor.white, for: .normal)
         shuffleButton.backgroundColor = UIColor.red
+        shuffleButton.titleLabel?.font = UIFont.init(name: "Avenir", size: 17)
         shuffleButton.clipsToBounds = true
         shuffleButton.layer.cornerRadius = 10.0
         shuffleButton.addTarget(self, action: #selector(shuffle), for: UIControlEvents.touchDown)
@@ -74,7 +78,7 @@ class BoardViewController: UIViewController, ARSCNViewDelegate {
             let num = arc4random_uniform(UInt32(n)) + 1
             if let view = self.instructionsView
             {
-                view.text = "Player " + String(num)
+                view.text = "Player " + String(num) + " must answer their question 😱."
             }
         }
     }
@@ -86,6 +90,7 @@ class BoardViewController: UIViewController, ARSCNViewDelegate {
         cancelButton.setTitle("Back", for: .normal)
         cancelButton.setTitleColor(UIColor.white, for: .normal)
         cancelButton.backgroundColor = UIColor.gray
+        cancelButton.titleLabel?.font = UIFont.init(name: "Avenir", size: 17)
         cancelButton.clipsToBounds = true
         cancelButton.layer.cornerRadius = 10.0
         cancelButton.addTarget(self, action: #selector(onCancelPressed), for: UIControlEvents.touchDown)
