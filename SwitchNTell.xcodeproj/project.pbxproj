@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3101839E218DF2DC00BD4CE0 /* BoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3101839D218DF2DC00BD4CE0 /* BoardViewController.swift */; };
 		98CC352C218DF3F10064F276 /* STOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CC352B218DF3F10064F276 /* STOnboardingViewController.swift */; };
+		7DAFC9C7218ED0C800D5E220 /* splash-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DAFC9C6218ED0C800D5E220 /* splash-logo.png */; };
 		7DC4EADC218E135E00BB2F75 /* Plane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC4EADB218E135E00BB2F75 /* Plane.swift */; };
 		7DC4EADE218E18C400BB2F75 /* BoardSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC4EADD218E18C400BB2F75 /* BoardSetupViewController.swift */; };
 		98CC352C218DF3F10064F276 /* STOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CC352B218DF3F10064F276 /* STOnboardingViewController.swift */; };
@@ -23,6 +24,7 @@
 /* Begin PBXFileReference section */
 		3101839D218DF2DC00BD4CE0 /* BoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewController.swift; sourceTree = "<group>"; };
 		98CC352B218DF3F10064F276 /* STOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STOnboardingViewController.swift; sourceTree = "<group>"; };
+		7DAFC9C6218ED0C800D5E220 /* splash-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splash-logo.png"; sourceTree = "<group>"; };
 		7DC4EADB218E135E00BB2F75 /* Plane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plane.swift; sourceTree = "<group>"; };
 		7DC4EADD218E18C400BB2F75 /* BoardSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardSetupViewController.swift; sourceTree = "<group>"; };
 		98CC352B218DF3F10064F276 /* STOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STOnboardingViewController.swift; sourceTree = "<group>"; };
@@ -53,6 +55,15 @@
 				7DC4EADB218E135E00BB2F75 /* Plane.swift */,
 			);
 			path = Objects;
+			sourceTree = "<group>";
+		};
+		7DC4EAE0218E230600BB2F75 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7DAFC9C6218ED0C800D5E220 /* splash-logo.png */,
+				7DC4EAE1218E231300BB2F75 /* plane_grid.png */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		98E004EC218DE9720054B7A4 = {
@@ -149,6 +160,8 @@
 			files = (
 				98E004FB218DE9720054B7A4 /* art.scnassets in Resources */,
 				98E00505218DE9740054B7A4 /* LaunchScreen.storyboard in Resources */,
+				7DC4EAE2218E231300BB2F75 /* plane_grid.png in Resources */,
+				7DAFC9C7218ED0C800D5E220 /* splash-logo.png in Resources */,
 				98E00502218DE9740054B7A4 /* Assets.xcassets in Resources */,
 				98E00500218DE9720054B7A4 /* Main.storyboard in Resources */,
 			);
@@ -320,7 +333,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = i.SwitchNTell;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -338,7 +351,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = i.SwitchNTell;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
