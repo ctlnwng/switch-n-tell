@@ -51,7 +51,7 @@ class BoardSetupViewController: UIViewController, ARSCNViewDelegate {
         
         // Create a new scene
         let scene = SCNScene()
-        sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints, ARSCNDebugOptions.showWorldOrigin]
+        sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
         
         // Set the scene to the view
         sceneView.scene = scene
@@ -300,7 +300,7 @@ class BoardSetupViewController: UIViewController, ARSCNViewDelegate {
             let angle = CGFloat(n) * degApart
             let xyCoord = polarToCartesian(angle: angle, radius: radius, center: center)
             
-            let gameSpace:GameSpace = GameSpace(x: xyCoord.x, y: CGFloat(center.y), z: xyCoord.y, questionString: questions[n], idx: String(n + 1))
+            let gameSpace:GameSpace = GameSpace(x: xyCoord.x, y: 0, z: xyCoord.y, questionString: questions[n], idx: String(n + 1))
             
             gameSpaces.append(gameSpace)
         }
@@ -330,8 +330,12 @@ extension float4x4 {
 
 extension UIColor {
     
-    class var customBlue: UIColor {
-        return UIColor(red:0.37, green:0.49, blue:0.89, alpha:1.0)
+    class var primaryColor: UIColor {
+        return UIColor(red:0.32, green:0.50, blue:0.76, alpha:1.0)
+    }
+    
+    class var customRed: UIColor {
+        return UIColor(red:0.80, green:0.25, blue:0.25, alpha:1.0)
     }
     
     class var customTeal: UIColor {
