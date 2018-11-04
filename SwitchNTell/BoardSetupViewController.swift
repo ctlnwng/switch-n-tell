@@ -17,6 +17,7 @@ class BoardSetupViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
     var onboarding: STOnboardingViewController?
+    var instructionsLabel: UILabel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,13 +69,48 @@ class BoardSetupViewController: UIViewController, ARSCNViewDelegate {
         sceneView.session.run(configuration)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         self.addSetupInstructions()
+        self.saveButton()
+        self.cancelButton()
     
+    }
+    
+    private func saveButton()
+    {
+        let shuffleButton = UIButton.init(type: UIButtonType.custom)
+        shuffleButton.frame = CGRect.init(x: self.view.frame.midX, y: self.view.frame.maxY - 40, width: 50, height: 100)
+        shuffleButton.setTitle("Shuffle", for: .normal)
+        shuffleButton.setTitleColor(UIColor.red, for: .normal)
+        shuffleButton.backgroundColor = UIColor.gray
+        shuffleButton.addTarget(self, action: #selector(goForward), for: UIControlEvents.touchDown)
+        
+        self.view.addSubview(shuffleButton)
+    }
+    
+    private func cancelButton()
+    {
+        let cancelButton = UIButton.init(type: UIButtonType.custom)
+        cancelButton.frame = CGRect.init(x: self.view.frame.midX - 50, y: self.view.frame.maxY - 40, width: 50, height: 100)
+        cancelButton.setTitle("Cancel", for: .normal)
+        cancelButton.setTitleColor(UIColor.red, for: .normal)
+        cancelButton.backgroundColor = UIColor.blue
+        cancelButton.addTarget(self, action: #selector(onCancelPressed), for: UIControlEvents.touchDown)
+        
+        self.view.addSubview(cancelButton)
+    }
+    
+    @objc func goForward() {
+        self.performSegue(withIdentifier: "goToBoard", sender: nil)
+    }
+    
+    @objc func onCancelPressed() {
+        self.navigationController?.popViewController(animated: true)
     }
     
     private func addSetupInstructions() {
         let topMargin: CGFloat = 15
         let instructionsHeight: CGFloat = 60
-        let view = UILabel.init()
+        self.instructionsLabel = UILabel.init()
+        if let view = self.instructionsLabel {
         view.text = STStringConstants.getSetupBoardInstructions()
         view.numberOfLines = 0
         view.textAlignment = NSTextAlignment.center
@@ -82,6 +118,12 @@ class BoardSetupViewController: UIViewController, ARSCNViewDelegate {
         view.textColor = UIColor.white
         view.frame = CGRect.init(x: self.view.frame.minX, y: topMargin, width: self.view.frame.width, height: instructionsHeight)
         self.view.addSubview(view)
+        }
+    }
+    
+    // PRAGMA MARK for noah
+    func setSetupInstructions(instructions: String) {
+       self.instructionsLabel?.text = instructions
     }
     
     override func viewWillDisappear(_ animated: Bool) {
