@@ -19,16 +19,12 @@ class STNumPlayersOnboardingViewController : UIViewController, UITextFieldDelega
         super.viewDidLoad()
         self.numPlayersTextField.delegate = self
         self.numPlayersTextField.keyboardType = .numbersAndPunctuation
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
         self.numPlayersTextField.becomeFirstResponder()
     }
     
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if (self.numPlayersTextField.isFirstResponder) {
-            self.numPlayersTextField.resignFirstResponder()
-        } else {
-            self.numPlayersTextField.becomeFirstResponder()
-        }
         self.numPlayers = numPlayersTextField.text
         self.performSegue(withIdentifier: "goToBoardSetup", sender: nil)
         return true
