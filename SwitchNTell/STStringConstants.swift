@@ -11,11 +11,11 @@ import Foundation
 class STStringConstants {
 
     static func getSetupBoardInstructions() -> String {
-        return "These are the instructions of how to set up the board."
+        return "Setup the board by creating your grid--tap on four dots to represent the four corners of the room."
     }
     
     static func getGamePlayInstructions() -> String {
-        return "These are the instructions of how to play the game. Move as many times as there are players in the game and this press shuffle to see who has to answer the question."
+        return "Your team has \(STSettings.instance().numPlayers) moves. Once you are done please press the Shuffle button to see who is in the hot seat 🔥."
     }
     
 }
