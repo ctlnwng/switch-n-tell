@@ -13,6 +13,7 @@ import ARKit
 class BoardViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
+    var instructionsView: UILabel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,8 +34,23 @@ class BoardViewController: UIViewController, ARSCNViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setUpSceneView();
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        self.addInstructions()
     }
 
+    private func addInstructions() {
+        let topMargin: CGFloat = 15
+        let instructionsHeight: CGFloat = 100
+        let view = UILabel.init()
+        view.text = STStringConstants.getGamePlayInstructions()
+        view.numberOfLines = 0
+        view.textAlignment = NSTextAlignment.center
+        view.backgroundColor = UIColor.gray
+        view.textColor = UIColor.white
+        view.frame = CGRect.init(x: self.view.frame.minX, y: topMargin, width: self.view.frame.width, height: instructionsHeight)
+        self.view.addSubview(view)
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 

@@ -24,7 +24,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="607" y="37"/>
+            <point key="canvasLocation" x="670" y="37"/>
         </scene>
         <!--Onboarding View Controller-->
         <scene sceneID="Xqc-U9-7au">
@@ -149,6 +149,38 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EOe-6Y-hql" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3882" y="37"/>
+        </scene>
+        <!--Board Setup View Controller-->
+        <scene sceneID="Ht5-Uj-9hy">
+            <objects>
+                <viewController id="LrK-d8-IbV" customClass="BoardSetupViewController" customModule="SwitchNTell" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="AIL-eW-kXx">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gvG-hg-9un" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+        <!--Board Setup View Controller-->
+        <scene sceneID="Nc1-gB-Kgh">
+            <objects>
+                <viewController id="N4S-gv-R2l" customClass="BoardSetupViewController" customModule="SwitchNTell" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7Ca-Ko-aqG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UQ8-U3-PMl">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="438"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </arscnView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wkK-KI-JGZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

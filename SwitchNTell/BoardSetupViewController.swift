@@ -59,7 +59,6 @@ class BoardSetupViewController: UIViewController, ARSCNViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         // Create a session configuration
         let configuration = ARWorldTrackingConfiguration()
         
@@ -67,6 +66,22 @@ class BoardSetupViewController: UIViewController, ARSCNViewDelegate {
         
         // Run the view's session
         sceneView.session.run(configuration)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        self.addSetupInstructions()
+    
+    }
+    
+    private func addSetupInstructions() {
+        let topMargin: CGFloat = 15
+        let instructionsHeight: CGFloat = 60
+        let view = UILabel.init()
+        view.text = STStringConstants.getSetupBoardInstructions()
+        view.numberOfLines = 0
+        view.textAlignment = NSTextAlignment.center
+        view.backgroundColor = UIColor.gray
+        view.textColor = UIColor.white
+        view.frame = CGRect.init(x: self.view.frame.minX, y: topMargin, width: self.view.frame.width, height: instructionsHeight)
+        self.view.addSubview(view)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
