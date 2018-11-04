@@ -87,26 +87,72 @@ class Plane: SCNNode {
     
     func interactNode(sphereNode: SphereNode?, rootNode: SCNNode){
         let sphere = SCNSphere(color: self.nodeColor, radius: CGFloat(self.nodeRadius)) //TODO: repeat
+        let tempSphere = SCNSphere(color: self.tempNodeColor, radius: CGFloat(self.nodeRadius)) //TODO: repeat
 
-        if(sphereNode == tempCord1), let c = tempCord1 {
-            cord2 = SphereNode(sphere: sphere, position: c.position)
-            tempCord1?.removeFromParentNode();
+        if let node = sphereNode {
+            let setNode = setNextNode(nextNode: SphereNode(sphere: sphere, position: node.position))
+            
+            tempCord1?.removeFromParentNode()
+            tempCord2?.removeFromParentNode()
+            tempCord3?.removeFromParentNode()
+            tempCord4?.removeFromParentNode()
+            
+            rootNode.addChildNode(setNode)
+            
+            let cordPosition = setNode.position
+            
+            //TODO: this is ROUGH
+            //when two cords have been placed, give two more options
+            if(cord1 != nil && cord2 != nil && cord3 == nil && cord4 == nil) {
+                
+                //make three options around it
+                if(cord1?.position.z == cord2?.position.z) {
+                    tempCord1 = SphereNode(sphere: tempSphere, position: SCNVector3(cordPosition.x, cordPosition.y, cordPosition.z + 1))
+                    tempCord2 = SphereNode(sphere: tempSphere, position: SCNVector3(cordPosition.x, cordPosition.y, cordPosition.z - 1))
+                }
+                else if(cord1?.position.x == cord2?.position.x)  {
+                    tempCord1 = SphereNode(sphere: tempSphere, position: SCNVector3(cordPosition.x + 1, cordPosition.y, cordPosition.z))
+                    tempCord2 = SphereNode(sphere: tempSphere, position: SCNVector3(cordPosition.x - 1, cordPosition.y, cordPosition.z))
+                }
+                
+                if let tc1 = tempCord1, let tc2 = tempCord2 {
+                    rootNode.addChildNode(tc1)
+                    rootNode.addChildNode(tc2)
+                }
+            }
+            
+            //when three cords have been placed, no need for more options
+            else if(cord1 != nil && cord2 != nil && cord3 != nil && cord4 == nil) {
+                
+                let cordPosition = setNode.position
+                
+                if(cord2?.position.z == cord3?.position.z) {
+                    cord4 = SphereNode(sphere: sphere, position: SCNVector3((cord3?.position.x)!, cordPosition.y, (cord1?.position.z)!))
+                }
+                else if(cord2?.position.x == cord3?.position.x) {
+                    cord4 = SphereNode(sphere: sphere, position: SCNVector3((cord1?.position.x)!, cordPosition.y, (cord3?.position.z)!))
+                }
+                if let c4 = cord4 {
+                    rootNode.addChildNode(c4)
+                    //TODO: PASS TO BOARD VIEW CONTROLLER (CAITLIN HELLO!)
+                }
+            }
         }
-        if(sphereNode == tempCord2), let c = tempCord2 {
-            cord2 = SphereNode(sphere: sphere, position: c.position)
-            tempCord2?.removeFromParentNode();
+        
+    }
+    
+    private func setNextNode(nextNode: SphereNode) -> SphereNode {
+        if(cord2 == nil) {
+            cord2 = nextNode;
+            return cord2!
+        } else if (cord3 == nil) {
+            cord3 = nextNode;
+            return cord3!
+        } else if (cord4 == nil) {
+            cord4 = nextNode;
+            return cord4!
         }
-        if(sphereNode == tempCord3), let c = tempCord3 {
-            cord2 = SphereNode(sphere: sphere, position: c.position)
-            tempCord3?.removeFromParentNode();
-        }
-        if(sphereNode == tempCord4), let c = tempCord4 {
-            cord2 = SphereNode(sphere: sphere, position: c.position)
-            tempCord4?.removeFromParentNode();
-        }
-        if let c2 = cord2 {
-            rootNode.addChildNode(c2)
-        }
+        return cord1! //TODO: lolno
     }
 
     
