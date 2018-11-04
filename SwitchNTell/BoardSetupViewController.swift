@@ -328,10 +328,6 @@ extension UIColor {
         return UIColor(red:0.80, green:0.25, blue:0.25, alpha:1.0)
     }
     
-    class var customBlue: UIColor {
-        return UIColor(red:0.37, green:0.49, blue:0.89, alpha:1.0)
-    }
-    
     class var customTeal: UIColor {
         return UIColor(red:0.31, green:0.77, blue:0.72, alpha:1.0)
     }
