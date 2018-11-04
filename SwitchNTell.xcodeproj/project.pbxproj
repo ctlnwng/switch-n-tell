@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3101839E218DF2DC00BD4CE0 /* BoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3101839D218DF2DC00BD4CE0 /* BoardViewController.swift */; };
 		310183A0218E215100BD4CE0 /* GameSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3101839F218E215100BD4CE0 /* GameSpace.swift */; };
+		310183A2218E840800BD4CE0 /* QuestionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310183A1218E840800BD4CE0 /* QuestionManager.swift */; };
 		7DC4EADC218E135E00BB2F75 /* Plane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC4EADB218E135E00BB2F75 /* Plane.swift */; };
 		7DC4EADE218E18C400BB2F75 /* BoardSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC4EADD218E18C400BB2F75 /* BoardSetupViewController.swift */; };
 		989E4682218E44AC00D4A674 /* STSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989E4681218E44AC00D4A674 /* STSettings.swift */; };
@@ -24,6 +25,7 @@
 /* Begin PBXFileReference section */
 		3101839D218DF2DC00BD4CE0 /* BoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewController.swift; sourceTree = "<group>"; };
 		3101839F218E215100BD4CE0 /* GameSpace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSpace.swift; sourceTree = "<group>"; };
+		310183A1218E840800BD4CE0 /* QuestionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionManager.swift; sourceTree = "<group>"; };
 		7DC4EADB218E135E00BB2F75 /* Plane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plane.swift; sourceTree = "<group>"; };
 		7DC4EADD218E18C400BB2F75 /* BoardSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardSetupViewController.swift; sourceTree = "<group>"; };
 		989E4681218E44AC00D4A674 /* STSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STSettings.swift; sourceTree = "<group>"; };
@@ -55,6 +57,7 @@
 				7DC4EADB218E135E00BB2F75 /* Plane.swift */,
 				3101839F218E215100BD4CE0 /* GameSpace.swift */,
 				989E4681218E44AC00D4A674 /* STSettings.swift */,
+				310183A1218E840800BD4CE0 /* QuestionManager.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -170,6 +173,7 @@
 				989E4682218E44AC00D4A674 /* STSettings.swift in Sources */,
 				98E004F9218DE9720054B7A4 /* AppDelegate.swift in Sources */,
 				7DC4EADE218E18C400BB2F75 /* BoardSetupViewController.swift in Sources */,
+				310183A2218E840800BD4CE0 /* QuestionManager.swift in Sources */,
 				3101839E218DF2DC00BD4CE0 /* BoardViewController.swift in Sources */,
 				310183A0218E215100BD4CE0 /* GameSpace.swift in Sources */,
 				98CC352C218DF3F10064F276 /* STOnboardingViewController.swift in Sources */,

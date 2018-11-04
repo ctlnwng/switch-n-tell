@@ -18,9 +18,9 @@ class GameSpace: SCNNode {
     var question: SCNText
     var questionNode: SCNNode
     
-    init(x: CGFloat, y: CGFloat, z: CGFloat) {
+    init(x: CGFloat, y: CGFloat, z: CGFloat, questionString: String) {
         let material = SCNMaterial()
-        material.diffuse.contents = UIColor.green
+        material.diffuse.contents = UIColor.magenta
         
         // Circle
         self.sphere = SCNSphere(radius: 0.1)
@@ -30,7 +30,7 @@ class GameSpace: SCNNode {
         self.sphereNode.position = SCNVector3(x: Float(x), y: Float(y), z: Float(z))
         
         // Question
-        self.question = SCNText(string: "What is your most traumatic memory?", extrusionDepth: 0.0)
+        self.question = SCNText(string: questionString, extrusionDepth: 0.0)
         self.question.font = UIFont (name: "Arial", size: 2)
         
         self.questionNode = SCNNode(geometry: question)

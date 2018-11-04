@@ -13,7 +13,7 @@ import ARKit
 class BoardViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
-    var boardWidth:Float = 5.0
+    var boardWidth:Float = 4.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,20 +67,16 @@ class BoardViewController: UIViewController, ARSCNViewDelegate {
         var gameSpaces: [GameSpace] = []
         
         let degApart:CGFloat = 360 / CGFloat(numPlayers)
-        
+        let radius = CGFloat(boardWidth / 2.0)
+        let questions = QuestionManager.getNRandomQuestions(n: numPlayers)
+
         for n in 0...(numPlayers - 1) {
             let angle = CGFloat(n) * degApart
-            let radius = CGFloat(boardWidth / 2.0)
             let xyCoord = polarToCartesian(angle: angle, radius: radius)
             
-            let gameSpace:GameSpace = GameSpace(x: xyCoord.x, y: 0, z: xyCoord.y)
+            let gameSpace:GameSpace = GameSpace(x: xyCoord.x, y: 0, z: xyCoord.y - radius, questionString: questions[n])
             
             gameSpaces.append(gameSpace)
-            
-            print(angle)
-            print(radius)
-            print(xyCoord.x)
-            print(xyCoord.y)
         }
         
         return gameSpaces
