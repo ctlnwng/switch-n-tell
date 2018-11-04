@@ -45,7 +45,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Let's Go!"/>
                                 <connections>
-                                    <segue destination="aRu-FX-71v" kind="show" id="W1d-gy-S0H"/>
+                                    <segue destination="aRu-FX-71v" kind="show" identifier="go" id="W1d-gy-S0H"/>
                                 </connections>
                             </button>
                         </subviews>

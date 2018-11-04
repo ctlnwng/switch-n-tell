@@ -77,10 +77,12 @@ class BoardSetupViewController: UIViewController, ARSCNViewDelegate {
     private func saveButton()
     {
         let shuffleButton = UIButton.init(type: UIButtonType.custom)
-        shuffleButton.frame = CGRect.init(x: self.view.frame.midX, y: self.view.frame.maxY - 40, width: 50, height: 100)
-        shuffleButton.setTitle("Shuffle", for: .normal)
-        shuffleButton.setTitleColor(UIColor.red, for: .normal)
-        shuffleButton.backgroundColor = UIColor.gray
+        shuffleButton.frame = CGRect.init(x: self.view.frame.midX + 10, y: self.view.frame.maxY - 100, width: 60, height: 50)
+        shuffleButton.setTitle("Next", for: .normal)
+        shuffleButton.setTitleColor(UIColor.white, for: .normal)
+        shuffleButton.backgroundColor = UIColor.red
+        shuffleButton.clipsToBounds = true
+        shuffleButton.layer.cornerRadius = 10.0
         shuffleButton.addTarget(self, action: #selector(goForward), for: UIControlEvents.touchDown)
         
         self.view.addSubview(shuffleButton)
@@ -89,10 +91,12 @@ class BoardSetupViewController: UIViewController, ARSCNViewDelegate {
     private func cancelButton()
     {
         let cancelButton = UIButton.init(type: UIButtonType.custom)
-        cancelButton.frame = CGRect.init(x: self.view.frame.midX - 50, y: self.view.frame.maxY - 40, width: 50, height: 100)
+        cancelButton.frame = CGRect.init(x: self.view.frame.midX - 60, y: self.view.frame.maxY - 100, width: 60, height: 50)
         cancelButton.setTitle("Cancel", for: .normal)
-        cancelButton.setTitleColor(UIColor.red, for: .normal)
-        cancelButton.backgroundColor = UIColor.blue
+        cancelButton.clipsToBounds = true
+        cancelButton.layer.cornerRadius = 10.0
+        cancelButton.setTitleColor(UIColor.white, for: .normal)
+        cancelButton.backgroundColor = UIColor.gray
         cancelButton.addTarget(self, action: #selector(onCancelPressed), for: UIControlEvents.touchDown)
         
         self.view.addSubview(cancelButton)
@@ -102,12 +106,13 @@ class BoardSetupViewController: UIViewController, ARSCNViewDelegate {
         self.performSegue(withIdentifier: "goToBoard", sender: nil)
     }
     
+    
     @objc func onCancelPressed() {
         self.navigationController?.popViewController(animated: true)
     }
     
     private func addSetupInstructions() {
-        let topMargin: CGFloat = 15
+        let topMargin: CGFloat = 35
         let instructionsHeight: CGFloat = 60
         self.instructionsLabel = UILabel.init()
         if let view = self.instructionsLabel {
@@ -120,6 +125,7 @@ class BoardSetupViewController: UIViewController, ARSCNViewDelegate {
         self.view.addSubview(view)
         }
     }
+
     
     // PRAGMA MARK for noah
     func setSetupInstructions(instructions: String) {
