@@ -23,6 +23,8 @@ class Plane: SCNNode {
     
     var cord1, cord2, cord3, cord4 : SphereNode?
     
+    var tempCord1, tempCord2, tempCord3, tempCord4 : SphereNode?
+    
     init(_ anchor: ARPlaneAnchor) {
         
         self.anchor = anchor
@@ -61,8 +63,18 @@ class Plane: SCNNode {
         //if Node 1, place wherever
         if(cord1 == nil && cord2 == nil && cord3 == nil && cord4 == nil) {
             cord1 = SphereNode(sphere: sphere, position: cordPosition)
-            if let c = cord1 {
-                rootNode.addChildNode(c)
+            //make three options around it
+            tempCord1 = SphereNode(sphere: sphere, position: SCNVector3(cordPosition.x + 1, cordPosition.y, cordPosition.z))
+            tempCord2 = SphereNode(sphere: sphere, position: SCNVector3(cordPosition.x, cordPosition.y, cordPosition.z + 1))
+            tempCord3 = SphereNode(sphere: sphere, position: SCNVector3(cordPosition.x - 1, cordPosition.y, cordPosition.z))
+            tempCord4 = SphereNode(sphere: sphere, position: SCNVector3(cordPosition.x, cordPosition.y, cordPosition.z - 1))
+
+            if let c1 = cord1, let tc1 = tempCord1, let tc2 = tempCord2, let tc3 = tempCord3, let tc4 = tempCord4 {
+                rootNode.addChildNode(c1)
+                rootNode.addChildNode(tc1)
+                rootNode.addChildNode(tc2)
+                rootNode.addChildNode(tc3)
+                rootNode.addChildNode(tc4)
             }
         }
         
