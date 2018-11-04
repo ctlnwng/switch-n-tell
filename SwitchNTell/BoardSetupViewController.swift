@@ -21,14 +21,11 @@ class BoardSetupViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
     
-    //Plane to place on
+    //Board to place on
+    var board : Board?
     var plane : Plane?
-    
-    //Nodes to place on plane TODO: move to Plane class
-    var nodes: [SCNNode] = []
-    var nodeColor = UIColor.orange;
-    var nodeRadius = CGFloat.init(0.1);
-    
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -100,19 +97,15 @@ class BoardSetupViewController: UIViewController, ARSCNViewDelegate {
         
         guard let hitTestResult = hitTestResults.first else { return }
         
-        //only place on the current plane
-        if(hitTestResult.anchor == plane?.planeAnchor) {
+        //only place on the current board
+        if(hitTestResult.anchor == plane?.anchor) {
             let translation = hitTestResult.worldTransform.translation
             let x = translation.x
             let y = translation.y
             let z = translation.z
             
-            let sphere = SCNSphere(color: self.nodeColor, radius: CGFloat(self.nodeRadius))
-            let sphereNode = SCNNode(geometry: sphere)
-            sphereNode.position = SCNVector3(x,y,z)
-            
-            sceneView.scene.rootNode.addChildNode(sphereNode)
-            nodes.append(sphereNode)
+            //TODO: yuck, should just do a relative location but tired
+            plane?.addCord(cordPosition: SCNVector3(x,y,z), rootNode: sceneView.scene.rootNode)
         }
     }
     
@@ -124,7 +117,11 @@ class BoardSetupViewController: UIViewController, ARSCNViewDelegate {
         plane?.removeFromParentNode()
         
         //save the new plane
-        plane = Plane(anchor)
+//        board = Board(anchor)
+//        node.addChildNode((board)!)
+        
+        plane = Plane(anchor) //replace with board just checking rendering
+
         
         //add the new plane to the scene
         if let p = plane {
@@ -135,36 +132,11 @@ class BoardSetupViewController: UIViewController, ARSCNViewDelegate {
     //helper function to update the existing plane, i.e. extend it if more area was found
     func updatePlane(node: SCNNode, anchor: ARPlaneAnchor) {
         //if this is not the current plane, we've seen it before, switch to it being the primary one
-        if let p = plane, p.planeAnchor != anchor {
+        if let p = plane, p.anchor != anchor {
             switchPlane(node: node, anchor: anchor);
         }
         //extend the current plane
         plane?.update(anchor)
-    }
-}
-
-//TODO: move to objects directory if keep beyond testing
-extension SCNSphere {
-    convenience init(color: UIColor, radius: CGFloat) {
-        self.init(radius: radius)
-        
-        let material = SCNMaterial()
-        material.diffuse.contents = color
-        materials = [material]
-    }
-}
-
-extension SCNVector3 {
-    func distance(to destination: SCNVector3) -> CGFloat {
-        let dx = destination.x - x
-        let dy = destination.y - y
-        let dz = destination.z - z
-        return CGFloat(sqrt(dx*dx + dy*dy + dz*dz))
-    }
-    
-    static func positionFrom(matrix: matrix_float4x4) -> SCNVector3 {
-        let column = matrix.columns.3
-        return SCNVector3(column.x, column.y, column.z)
     }
 }
 
